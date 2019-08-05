@@ -22,7 +22,6 @@ class C1 {
   }
 
   def cap_1_1_2() = {
-
   }
 
   def cap_1_2_2() = {
@@ -31,4 +30,11 @@ class C1 {
     //eventually { it.next() shouldBe 3 }
   }
 
+  class MyClass(var index: Int, var name: String) {}
+
+  def cap_1_3_2() = {
+    val c = new MyClass(1,  "name")
+    println(c.index + c.name)
+
+  }
 }
