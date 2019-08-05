@@ -38,3 +38,13 @@ class C1 {
 
   }
 }
+
+object C1 {
+
+  @Override
+  def main(array: Array[String]) = {
+    val c1 = new C1
+    val c = new c1.MyClass(1, "name")
+    println(c.index)
+  }
+}
