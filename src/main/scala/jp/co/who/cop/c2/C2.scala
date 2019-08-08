@@ -1,4 +1,4 @@
-package jp.co.who.cop.c1
+package jp.co.who.cop.c2
 
 class C2 {
 
