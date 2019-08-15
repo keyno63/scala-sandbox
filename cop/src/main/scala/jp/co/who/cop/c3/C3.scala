@@ -18,7 +18,7 @@ class C3 {
 }
 
 object C3 {
-  def main(args: Array[String]) = {
+  def main(args: Array[String]): Unit  = {
     val c3 = new C3
     c3.cap_3_1_0()
   }

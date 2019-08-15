@@ -7,7 +7,7 @@ class C4 {
     def uncheck(): Int = ~(sum & 0xFF) + 1
   }
 
-  def cap_4_1_0() = {
+  def cap_4_1_0(): Unit  = {
     val acc = new ChecksumAccumulator
     val csa = new ChecksumAccumulator
     println(acc.sum, csa.sum)
@@ -30,7 +30,7 @@ class C4 {
         cs
       }
   }
-  def cap_4_3_0() = {
+  def cap_4_3_0(): Unit  = {
     val s = "Every value is an object"
     val ret = ChecksumAccumulator.calculate(s)
     println(ret)

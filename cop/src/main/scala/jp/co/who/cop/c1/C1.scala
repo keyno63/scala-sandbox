@@ -6,13 +6,13 @@ import java.math.BigInteger
 
 class C1 {
 
-  def cap_1_1_0() = {
+  def cap_1_1_0(): Unit = {
     var capital = Map("Map" -> "Washington", "France" -> "Paris")
     capital += ("Japan" -> "Tokyo")
     println(capital("France"))
   }
 
-  def cap_1_1_1() = {
+  def cap_1_1_1(): Unit  = {
     def factorial(x: BigInteger): BigInteger = {
       if (x == BigInteger.ZERO)
         BigInteger.ONE
@@ -21,10 +21,10 @@ class C1 {
     }
   }
 
-  def cap_1_1_2() = {
+  def cap_1_1_2(): Unit  = {
   }
 
-  def cap_1_2_2() = {
+  def cap_1_2_2(): Unit  = {
     val xs = 1 to 3
     val it = xs.iterator
     //eventually { it.next() shouldBe 3 }
@@ -32,7 +32,7 @@ class C1 {
 
   class MyClass(var index: Int, var name: String) {}
 
-  def cap_1_3_2() = {
+  def cap_1_3_2(): Unit  = {
     val c = new MyClass(1,  "name")
     println(c.index + c.name)
 
@@ -42,7 +42,7 @@ class C1 {
 object C1 {
 
   @Override
-  def main(array: Array[String]) = {
+  def main(array: Array[String]): Unit  = {
     val c1 = new C1
     val c = new c1.MyClass(1, "name")
     println(c.index)
