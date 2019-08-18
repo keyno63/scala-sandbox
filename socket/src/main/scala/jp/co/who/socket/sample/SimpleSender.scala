@@ -31,11 +31,6 @@ class SimpleSender(remote: InetSocketAddress)
 
 object SimpleSender extends App {
 
-  /*
-  val systemListener = ActorSystem("UDPSocket")
-  val lc = systemListener.actorOf(Props[Listener], "UDPSocket")
-  */
-
   val systemSender = ActorSystem("SimpleSender")
   val sock = new InetSocketAddress("localhost", 18081)
   val ac = systemSender.actorOf(Props(classOf[SimpleSender], sock), "SimpleSender")

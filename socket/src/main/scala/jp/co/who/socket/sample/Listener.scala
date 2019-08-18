@@ -8,7 +8,7 @@ import akka.io.{IO, Udp}
 class Listener extends Actor with ActorLogging {
   import context.system
   val port = 18081
-  IO(Udp) ! Udp.Bind(self, new InetSocketAddress("localhost", port))
+  IO(Udp) ! Udp.Bind(self, new InetSocketAddress("192.168.1.148", port))
   log.info("bind")
 
   def receive = {

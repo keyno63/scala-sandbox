@@ -2,14 +2,14 @@ package jp.co.who.cop.c1
 
 import java.math.BigInteger
 
-//import org.scalatest._
-
 class C1 {
 
+  private var capital = Map("Map" -> "Washington", "France" -> "Paris")
+
+  def getCapital: Map[String, String] = capital
+
   def cap_1_1_0(): Unit = {
-    var capital = Map("Map" -> "Washington", "France" -> "Paris")
     capital += ("Japan" -> "Tokyo")
-    println(capital("France"))
   }
 
   def cap_1_1_1(): Unit  = {
@@ -32,10 +32,8 @@ class C1 {
 
   class MyClass(var index: Int, var name: String) {}
 
-  def cap_1_3_2(): Unit  = {
-    val c = new MyClass(1,  "name")
-    println(c.index + c.name)
-
+  def cap_1_3_2(): C1.this.MyClass  = {
+    new MyClass(1,  "name")
   }
 }
 
