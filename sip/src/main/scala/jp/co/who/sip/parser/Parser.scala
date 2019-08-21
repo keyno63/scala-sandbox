@@ -42,8 +42,13 @@ object Parser {
     """.stripMargin
 
   def main(args: Array[String]): Unit = {
+    println(INVITE split '\n')
+  }
+
+  def sampleParser(): Parser = {
     val c = new Parser
     c.sample("hoge")
     c.sample(1)
+    c
   }
 }
