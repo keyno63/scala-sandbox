@@ -2,10 +2,9 @@ package jp.co.who.sip.parser
 
 class Parser {
 
-
-  def sample(data: Any): Unit = data match {
-    case s: String => println(s)
-    case _ => println("not")
+  def sample(data: Any): Any = data match {
+    case s: String => s
+    case _ => Some(data)
   }
 
 }
@@ -47,7 +46,7 @@ object Parser {
 
   def sampleParser(): Parser = {
     val c = new Parser
-    c.sample("hoge")
+    c.sample("something")
     c.sample(1)
     c
   }

@@ -14,6 +14,12 @@ lazy val server = (project in file("socket"))
   )
   /*.aggregate(common).dependsOn(common)*/
 
+lazy val sip = (project in file("sip"))
+  .settings(commonSettings)
+  .settings(
+    name := "sip"
+  )
+
 lazy val commonSettings = Seq(
   scalaVersion := "2.12.8",
   version := "0.1-SNAPSHOT",
@@ -24,6 +30,7 @@ lazy val commonSettings = Seq(
     // akka
     "com.typesafe.akka" %% "akka-actor" % "2.6.0-M5",
     "com.typesafe.akka" %% "akka-testkit" % "2.6.0-M5" % Test,
+    "org.wvlet.airframe" %% "airspec" % airSpecVersion % "test",
   )
 )
 
@@ -33,3 +40,4 @@ version := "0.1"
 
 scalaVersion := "2.12.8"
 
+val airSpecVersion = "19.8.8"
