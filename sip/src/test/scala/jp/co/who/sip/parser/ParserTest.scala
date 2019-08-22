@@ -8,7 +8,7 @@ class ParserTest extends AirSpec {
     val parser = new Parser()
     parser.sample("sample") shouldBe "sample"
 
-    parser.sample("10") shouldBe 10
+    parser.sample(10) shouldBe Some(10)
   }
 
 }

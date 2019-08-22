@@ -31,7 +31,8 @@ lazy val commonSettings = Seq(
     "com.typesafe.akka" %% "akka-actor" % "2.6.0-M5",
     "com.typesafe.akka" %% "akka-testkit" % "2.6.0-M5" % Test,
     "org.wvlet.airframe" %% "airspec" % airSpecVersion % "test",
-  )
+  ),
+  testFrameworks += new TestFramework("wvlet.airspec.Framework")
 )
 
 name := "training"
@@ -41,3 +42,4 @@ version := "0.1"
 scalaVersion := "2.12.8"
 
 val airSpecVersion = "19.8.8"
+testFrameworks += new TestFramework("wvlet.airspec.Framework")
