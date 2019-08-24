@@ -1,4 +1,5 @@
-import sbt.Keys._
+import sbt._
+import sbt.Keys.{libraryDependencies, _}
 
 lazy val cop = (project in file("cop"))
   .settings(commonSettings)
@@ -18,6 +19,17 @@ lazy val sip = (project in file("sip"))
   .settings(commonSettings)
   .settings(
     name := "sip"
+  )
+
+lazy val dashboard = (project in file("dashboard"))
+  .enablePlugins(PlayScala)
+  .settings(commonSettings)
+  .settings(
+    name := "dashboard",
+    libraryDependencies ++=Seq(
+      guice, 
+      "org.scalatestplus.play" %% "scalatestplus-play" % "4.0.1" % Test
+    )
   )
 
 lazy val commonSettings = Seq(
@@ -42,4 +54,3 @@ version := "0.1"
 scalaVersion := "2.12.8"
 
 val airSpecVersion = "19.8.8"
-testFrameworks += new TestFramework("wvlet.airspec.Framework")
