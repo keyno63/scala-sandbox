@@ -31,7 +31,7 @@ class HelloControllerSpec extends AirSpec {
     contentAsString(result) shouldBe seq.sum.toString
   }
 
-  def `クエリーパラメータがない場合は 0`(): Unit = {
+  def `クエリーパラメータがない場合は 0 のレスポンスを返す`(): Unit = {
     val result =  controller.plus(None, None)(FakeRequest(GET, "/plus"))
 
     status(result) shouldBe 200
