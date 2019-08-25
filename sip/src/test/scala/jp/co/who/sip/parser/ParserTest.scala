@@ -11,4 +11,11 @@ class ParserTest extends AirSpec {
     parser.sample(10) shouldBe Some(10)
   }
 
+  def `sample code2`(): Unit = {
+    val parser = new Parser()
+    parser.sample("get") shouldBe "get"
+
+    parser.sample(-1) shouldBe Some(-1)
+  }
+
 }
