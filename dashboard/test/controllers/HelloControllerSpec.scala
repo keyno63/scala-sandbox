@@ -1,45 +1,40 @@
 package controllers
 
-import org.scalatestplus.play.PlaySpec
 import play.api.test.FakeRequest
 import play.api.test.Helpers._
 import wvlet.airspec._
 
-class HelloControllerSpec extends PlaySpec with AirSpec {
+class HelloControllerSpec extends AirSpec {
 
-  def controller = new HelloController(stubControllerComponents())
+  val controller = new HelloController(stubControllerComponents())
 
-  "get" should {
-    "クエリーパラメータがある場合は「Hello, namae!」というレスポンスを返す" in {
-      val name = "namae"
-      val result = controller.get(Some(name))(FakeRequest())
+  def `root_クエリーパラメータがある場合は「Hello, namae!」というレスポンスを返す`(): Unit = {
+    val name = "namae"
+    val result = controller.get(Some(name))(FakeRequest())
 
-      status(result) shouldBe 200
-      contentAsString(result) shouldBe s"Hello, $name!"
-    }
-
-    """クエリーパラメータがない場合は「Please give a name as a query parameter named "name".」というレスポンスを返す""" in {
-      val result = controller.get(None)(FakeRequest())
-
-      status(result) shouldBe 200
-      contentAsString(result) shouldBe """Please give a name as a query parameter named "name"."""
-    }
+    status(result) shouldBe 200
+    contentAsString(result) shouldBe s"Hello, $name!"
   }
 
-  "plus" should {
-    "クエリーパラメータが指定されている場合は合計値のレスポンスを返す" in {
-      val seq = Seq("1", "2")
-      val result = controller.get(Some(seq.head))(FakeRequest())
+  def `root_クエリーパラメータがない場合は「Please give a name as a query parameter named "name".」というレスポンスを返す`():Unit = {
+    val result = controller.get(None)(FakeRequest())
 
-      status(result) shouldBe 200
-      contentAsString(result) shouldBe seq.map(_.toInt).sum
-    }
+    status(result) shouldBe 200
+    contentAsString(result) shouldBe """Please give a name as a query parameter named "name"."""
+  }
 
-    """クエリーパラメータがない場合は「Please give a name as a query parameter named "name".」というレスポンスを返す""" in {
-      val result = controller.get(None)(FakeRequest())
+  def `クエリーパラメータが指定されている場合は合計値のレスポンスを返す"`(): Unit = {
+    val seq = Seq(1, 2)
+    val result = controller.plus(Some(seq.head), Some(seq(1)))(FakeRequest(GET, "/plus"))
 
-      status(result) shouldBe 200
-      contentAsString(result) shouldBe """Please give a name as a query parameter named "name"."""
-    }
+    status(result) shouldBe 200
+    contentAsString(result) shouldBe seq.sum.toString
+  }
+
+  def `クエリーパラメータがない場合は 0`(): Unit = {
+    val result =  controller.plus(None, None)(FakeRequest(GET, "/plus"))
+
+    status(result) shouldBe 200
+    contentAsString(result) shouldBe 0.toString
   }
 }

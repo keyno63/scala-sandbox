@@ -22,9 +22,8 @@ class HelloController @Inject()(cc: ControllerComponents) extends AbstractContro
   def plus(a: Option[Int], b: Option[Int]) =
     Action { implicit request: Request[AnyContent] =>
       Ok {
-        val x = a.get + b.get
+        val x = a.getOrElse(0) + b.getOrElse(0)
         s"$x"
-        //x
       }
     }
 }
