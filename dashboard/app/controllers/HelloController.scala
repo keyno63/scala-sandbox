@@ -1,12 +1,11 @@
 package controllers
 
-import javax.inject.Inject
-import javax.inject.Singleton
-import play.api.i18n.{I18nSupport, Messages, MessagesApi}
+import javax.inject.{Inject, Singleton}
+import play.api.i18n.{I18nSupport, Messages}
 import play.api.mvc._
 
 @Singleton
-class HelloController @Inject()(cc: ControllerComponents, override val messagesApi: MessagesApi)
+class HelloController @Inject()(cc: ControllerComponents)
   extends AbstractController(cc) with I18nSupport {
 
   def get(name: Option[String]) =
