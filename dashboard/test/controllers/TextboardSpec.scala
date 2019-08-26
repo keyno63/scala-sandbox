@@ -74,7 +74,7 @@ class TextboardSpec
     eventually {
       val error = findAll(cssSelector("p#error")).toSeq
       error.length shouldBe 1
-      error(0).text shouldBe "The message is too long."
+      error.head.text shouldBe "The message is too long."
     }
   }
 }
