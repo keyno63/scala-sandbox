@@ -2,8 +2,11 @@ package controllers
 
 import org.scalatestplus.play._
 import org.scalatestplus.play.guice.GuiceOneServerPerTest
+import wvlet.airspec.AirSpec
 
-class TextboardSpec extends PlaySpec with GuiceOneServerPerTest with OneBrowserPerSuite with HtmlUnitFactory {
+class TextboardSpec
+  extends AirSpec with GuiceOneServerPerTest
+    with OneBrowserPerSuite with HtmlUnitFactory {
 
   import org.openqa.selenium.htmlunit.HtmlUnitDriver
 
@@ -16,67 +19,62 @@ class TextboardSpec extends PlaySpec with GuiceOneServerPerTest with OneBrowserP
     driver
   }
 
-  "GET /" should {
-    "何も投稿しない場合はメッセージを表示しない" in {
-      go to s"http://localhost:$port/"
-      assert(pageTitle === "Scala Text Textboard")
-      assert(findAll(className("post-body")).length === 0)
+  def `GETリクエスト 何も投稿しない場合はメッセージを表示しない`(): Unit = {
+    go to s"http://localhost:$port/"
+    pageTitle shouldBe "Scala Text Textboard"
+    findAll(className("post-body")).length shouldBe 0
+  }
+
+  def `POSTリクエスト 投稿したものが表示される`(): Unit = {
+    val body = "test post"
+
+    go to s"http://localhost:$port/"
+    textField(cssSelector("input#post")).value = body
+    submit()
+
+    eventually {
+      val posts = findAll(className("post-body")).toSeq
+      posts.length shouldBe 1
+      posts.head.text shouldBe body
+      findAll(cssSelector("p#error")).length shouldBe 0
     }
   }
 
-  "POST /" should {
-    "投稿したものが表示される" in {
-      val body = "test post"
+  def `POST 投稿したものが表示される その2`(): Unit = {
+    go to s"http://localhost:$port/"
 
-      go to s"http://localhost:$port/"
-      textField(cssSelector("input#post")).value = body
-      submit()
-
-      eventually {
-        val posts = findAll(className("post-body")).toSeq
-        assert(posts.length === 1)
-        assert(posts(0).text === body)
-        assert(findAll(cssSelector("p#error")).length === 0)
-      }
+    eventually {
+      val posts = findAll(className("post-body")).toSeq
+      posts.length shouldBe 1
     }
   }
 
-  "POST /" should {
-    "投稿したものが表示される その2" in {
-      go to s"http://localhost:$port/"
 
-      eventually {
-        val posts = findAll(className("post-body")).toSeq
-        assert(posts.length === 1)
-      }
+  def `空のメッセージは投稿できない`(): Unit = {
+    val body = ""
+
+    go to s"http://localhost:$port/"
+    textField(cssSelector("input#post")).value = body
+    submit()
+
+    eventually {
+      val error = findAll(cssSelector("p#error")).toSeq
+      error.length shouldBe  1
+      error.head.text shouldBe "Please enter a message."
     }
+  }
 
-    "空のメッセージは投稿できない" in {
-      val body = ""
+  def `長すぎるメッセージは投稿できない`(): Unit = {
+    val body = "too long messages"
 
-      go to s"http://localhost:$port/"
-      textField(cssSelector("input#post")).value = body
-      submit()
+    go to s"http://localhost:$port/"
+    textField(cssSelector("input#post")).value = body
+    submit()
 
-      eventually {
-        val error = findAll(cssSelector("p#error")).toSeq
-        assert(error.length === 1)
-        assert(error(0).text === "Please enter a message.")
-      }
-    }
-
-    "長すぎるメッセージは投稿できない" in {
-      val body = "too long messages"
-
-      go to s"http://localhost:$port/"
-      textField(cssSelector("input#post")).value = body
-      submit()
-
-      eventually {
-        val error = findAll(cssSelector("p#error")).toSeq
-        assert(error.length === 1)
-        assert(error(0).text === "The message is too long.")
-      }
+    eventually {
+      val error = findAll(cssSelector("p#error")).toSeq
+      error.length shouldBe 1
+      error(0).text shouldBe "The message is too long."
     }
   }
 }
