@@ -5,7 +5,7 @@ import org.scalatestplus.play.guice.GuiceOneServerPerTest
 import wvlet.airspec.AirSpec
 
 class TextboardSpec
-  extends AirSpec with GuiceOneServerPerTest
+  extends PlaySpec with AirSpec with GuiceOneServerPerTest
     with OneBrowserPerSuite with HtmlUnitFactory {
 
   import org.openqa.selenium.htmlunit.HtmlUnitDriver
