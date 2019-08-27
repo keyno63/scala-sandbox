@@ -1,4 +1,5 @@
 GET    /name    controllers.HelloController.get(name: Option[String])
-GET   /    controllers.TextboardController.post()
-POST   /    controllers.TextboardController.post()
 GET    /plus    controllers.HelloController.plus(a: Option[Int], b: Option[Int])
+
+GET    /    controllers.TextboardController.get()
+POST   /    controllers.TextboardController.post()
