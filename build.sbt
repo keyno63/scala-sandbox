@@ -35,6 +35,7 @@ lazy val dashboard = (project in file("dashboard"))
       "org.scalikejdbc"        %% "scalikejdbc-config"           % scalikejdbcVersion,
       "org.scalikejdbc"        %% "scalikejdbc-jsr310"           % scalikejdbcVersion,
       "org.scalikejdbc"        %% "scalikejdbc-play-initializer" % "2.7.1-scalikejdbc-3.3",
+      "com.h2database"         %  "h2"                           % "1.4.192",
     )
   )
 
