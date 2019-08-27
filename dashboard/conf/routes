@@ -3,3 +3,6 @@ GET    /plus    controllers.HelloController.plus(a: Option[Int], b: Option[Int])
 
 GET    /    controllers.TextboardController.get()
 POST   /    controllers.TextboardController.post()
+
+GET    /posts   controllers.PostsController.get()
+POST   /posts   controllers.PostsController.post()
