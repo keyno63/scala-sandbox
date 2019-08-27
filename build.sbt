@@ -28,7 +28,13 @@ lazy val dashboard = (project in file("dashboard"))
     name := "dashboard",
     libraryDependencies ++=Seq(
       guice, 
-      "org.scalatestplus.play" %% "scalatestplus-play" % "4.0.1" % Test
+      "org.scalatestplus.play" %% "scalatestplus-play" % "4.0.1" % Test,
+      jdbc,
+      evolutions,
+      "org.scalikejdbc"        %% "scalikejdbc"                  % scalikejdbcVersion,
+      "org.scalikejdbc"        %% "scalikejdbc-config"           % scalikejdbcVersion,
+      "org.scalikejdbc"        %% "scalikejdbc-jsr310"           % scalikejdbcVersion,
+      "org.scalikejdbc"        %% "scalikejdbc-play-initializer" % "2.5.3",
     )
   )
 
@@ -54,3 +60,5 @@ version := "0.1"
 scalaVersion := "2.12.8"
 
 val airSpecVersion = "19.8.8"
+
+val scalikejdbcVersion = "3.3.5"
