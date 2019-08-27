@@ -9,14 +9,14 @@ import play.api.i18n.{I18nSupport, Messages, MessagesApi}
 import play.api.libs.json.Json
 import play.api.mvc.{AbstractController, ControllerComponents}
 
-case class PostRequest(body: String)
+case class PostRequests(body: String)
 
 class PostsController @Inject()(cc: ControllerComponents, override val messagesApi: MessagesApi) extends AbstractController(cc)  with I18nSupport {
 
   private[this] val form = Form(
     mapping(
       "post" -> text(minLength = 1, maxLength = 10)
-    )(PostRequest.apply)(PostRequest.unapply))
+    )(PostRequests.apply)(PostRequests.unapply))
 
   def get = Action { implicit request =>
     Ok(Json.toJson(Response(Meta(200), Some(Json.obj("posts" -> Json.toJson(PostRepository.findAll))))))
@@ -28,8 +28,8 @@ class PostsController @Inject()(cc: ControllerComponents, override val messagesA
         val errorMessage = Messages(error.errors("post").head.message)
         BadRequest(Json.toJson(Response(Meta(400, Some(errorMessage)))))
       },
-      postRequest => {
-        val post = Post(postRequest.body, OffsetDateTime.now)
+      postRequests => {
+        val post = Post(postRequests.body, OffsetDateTime.now)
         PostRepository.add(post)
         Ok(Json.toJson(Response(Meta(200))))
       }
