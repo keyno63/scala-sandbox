@@ -2,22 +2,20 @@ package controllers
 
 import org.scalatestplus.play._
 import org.scalatestplus.play.guice.GuiceOneServerPerTest
+import play.api.Application
+import play.api.inject.guice.GuiceApplicationBuilder
 import wvlet.airspec.AirSpec
 
 class TextboardSpec
   extends PlaySpec with AirSpec with GuiceOneServerPerTest
     with OneBrowserPerSuite with HtmlUnitFactory {
 
-  import org.openqa.selenium.htmlunit.HtmlUnitDriver
-
-  override def createWebDriver() = {
-    val driver = new HtmlUnitDriver {
-      def setAcceptLanguage(lang: String) =
-        this.getWebClient().addRequestHeader("Accept-Language", lang)
-    }
-    driver.setAcceptLanguage("en")
-    driver
-  }
+  override def fakeApplication(): Application =
+    new GuiceApplicationBuilder()
+      .configure(
+        "db.default.driver" -> "org.h2.Driver",
+        "db.default.url" -> "jdbc:h2:mem:test;MODE=MYSQL")
+      .build()
 
   def `GETリクエスト 何も投稿しない場合はメッセージを表示しない`(): Unit = {
     go to s"http://localhost:$port/"

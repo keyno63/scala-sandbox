@@ -1,11 +1,17 @@
 package controllers
 
+import scalikejdbc._
+import scalikejdbc.jsr310._
+
 object PostRepository {
 
-  var posts: Seq[Post] = Vector()
+  def findAll: Seq[Post] = DB readOnly { implicit session =>
+    sql"SELECT id, body, date FROM posts".map { rs =>
+      Post(rs.long("id"), rs.string("body"), rs.offsetDateTime("date"))
+    }.list().apply()
+  }
 
-  def findAll: Seq[Post] = posts
-
-  def add(post: Post): Unit = { posts = posts :+ post }
-
+  def add(post: Post): Unit = DB localTx { implicit session =>
+    sql"INSERT INTO posts (body, date) VALUES (${post.body}, ${post.date})".update().apply()
+  }
 }

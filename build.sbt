@@ -34,7 +34,7 @@ lazy val dashboard = (project in file("dashboard"))
       "org.scalikejdbc"        %% "scalikejdbc"                  % scalikejdbcVersion,
       "org.scalikejdbc"        %% "scalikejdbc-config"           % scalikejdbcVersion,
       "org.scalikejdbc"        %% "scalikejdbc-jsr310"           % scalikejdbcVersion,
-      "org.scalikejdbc"        %% "scalikejdbc-play-initializer" % "2.5.3",
+      "org.scalikejdbc"        %% "scalikejdbc-play-initializer" % "2.7.1-scalikejdbc-3.3",
     )
   )
 
@@ -61,4 +61,4 @@ scalaVersion := "2.12.8"
 
 val airSpecVersion = "19.8.8"
 
-val scalikejdbcVersion = "3.3.5"
+val scalikejdbcVersion = "2.5.2"
