@@ -3,6 +3,7 @@ import sbt.Keys._
 
 lazy val cop = (project in file("cop"))
   .settings(commonSettings)
+  .settings(airSpecSettings)
   .settings(
     name := "cop",
     exportJars := true
@@ -24,6 +25,7 @@ lazy val sip = (project in file("sip"))
 lazy val dashboard = (project in file("dashboard"))
   .enablePlugins(PlayScala)
   .settings(commonSettings)
+  .settings(airSpecSettings)
   .settings(
     name := "dashboard",
     libraryDependencies ++=Seq(
@@ -42,6 +44,7 @@ lazy val dashboard = (project in file("dashboard"))
 
 lazy val grammar = (project in file("grammar"))
   .settings(commonSettings)
+  .settings(airSpecSettings)
   .settings(
     name := "grammar",
     libraryDependencies ++=Seq(
@@ -50,7 +53,7 @@ lazy val grammar = (project in file("grammar"))
 
 lazy val scalajs = (project in file("scalajs"))
   .enablePlugins(ScalaJSPlugin)
-  .settings(commonSettings)
+  .settings(scalaJsSpecSettings)
   .settings(scalaJsSettings)
   .settings(
     name := "scalajs",
@@ -70,15 +73,23 @@ lazy val commonSettings = Seq(
   ),
 )
 
+lazy val airSpecSettings = Seq(
+  scalacOptions ++= Seq("-unchecked", "-feature", "-language:implicitConversions", "-language:higherKinds", "-language:postfixOps"),
+  libraryDependencies += "org.wvlet.airframe" %% "airspec" % airSpecVersion % "test",
+  testFrameworks += new TestFramework("wvlet.airspec.Framework"),
+)
+
 lazy val scalaJsSettings = Seq(
+  scalaVersion := "2.12.8",
+  version := "0.1-SNAPSHOT",
   scalacOptions += "-P:scalajs:sjsDefinedByDefault",
   scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) },
   scalaJSUseMainModuleInitializer := true
 )
 
-lazy val airSpecSettings = Seq(
+lazy val scalaJsSpecSettings = Seq(
   scalacOptions ++= Seq("-unchecked", "-feature", "-language:implicitConversions", "-language:higherKinds", "-language:postfixOps"),
-  libraryDependencies += "org.wvlet.airframe" %% "airspec" % airSpecVersion % "test",
+  libraryDependencies += "org.wvlet.airframe" %%% "airspec" % airSpecVersion % "test",
   testFrameworks += new TestFramework("wvlet.airspec.Framework"),
 )
 
