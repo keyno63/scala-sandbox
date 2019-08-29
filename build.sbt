@@ -9,7 +9,7 @@ lazy val cop = (project in file("cop"))
     exportJars := true
   )
 
-lazy val server = (project in file("socket"))
+lazy val socket = (project in file("socket"))
   .settings(commonSettings)
   .settings(
     name := "socket"
