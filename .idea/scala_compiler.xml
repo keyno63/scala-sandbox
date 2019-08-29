@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ScalaCompilerConfiguration">
     <profile name="sbt 1" modules="training,training_1159" />
-    <profile name="sbt 2" modules="Akka VoIP common library,Akka VoIP server,cop,cop-training library,sip,socket,training library">
+    <profile name="sbt 2" modules="Akka VoIP common library,Akka VoIP server,cop,cop-training library,grammar,sip,socket,training library">
       <option name="postfixOps" value="true" />
       <option name="implicitConversions" value="true" />
       <option name="higherKinds" value="true" />
       <option name="uncheckedWarnings" value="true" />
       <option name="featureWarnings" value="true" />
     </profile>
-    <profile name="sbt 3" modules="dashboard,training-dashboard">
+    <profile name="sbt 3" modules="dashboard,grammer,training-dashboard">
       <option name="postfixOps" value="true" />
       <option name="implicitConversions" value="true" />
       <option name="higherKinds" value="true" />
