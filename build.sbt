@@ -18,6 +18,7 @@ lazy val server = (project in file("socket"))
 
 lazy val sip = (project in file("sip"))
   .settings(commonSettings)
+  .settings(airSpecSettings)
   .settings(
     name := "sip"
   )
