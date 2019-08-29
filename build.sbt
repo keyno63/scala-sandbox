@@ -1,5 +1,5 @@
 import sbt._
-import sbt.Keys.{libraryDependencies, _}
+import sbt.Keys._
 
 lazy val cop = (project in file("cop"))
   .settings(commonSettings)
@@ -48,6 +48,15 @@ lazy val grammar = (project in file("grammar"))
     )
   )
 
+lazy val scalajs = (project in file("scalajs"))
+  .enablePlugins(ScalaJSPlugin)
+  .settings(commonSettings)
+  .settings(scalaJsSettings)
+  .settings(
+    name := "scalajs",
+    artifactPath in (Compile, fastOptJS) := baseDirectory.value / "dist" / "scalajs.js",
+  )
+
 lazy val commonSettings = Seq(
   scalaVersion := "2.12.8",
   version := "0.1-SNAPSHOT",
@@ -62,6 +71,12 @@ lazy val commonSettings = Seq(
     "com.typesafe.akka" %% "akka-testkit" % "2.6.0-M5" % Test,
   ),
   testFrameworks += new TestFramework("wvlet.airspec.Framework")
+)
+
+lazy val scalaJsSettings = Seq(
+  scalacOptions += "-P:scalajs:sjsDefinedByDefault",
+  scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) },
+  scalaJSUseMainModuleInitializer := true
 )
 
 name := "training"
