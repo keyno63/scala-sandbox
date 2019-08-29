@@ -60,17 +60,14 @@ lazy val scalajs = (project in file("scalajs"))
 lazy val commonSettings = Seq(
   scalaVersion := "2.12.8",
   version := "0.1-SNAPSHOT",
-  scalacOptions ++= Seq("-unchecked", "-feature", "-language:implicitConversions", "-language:higherKinds", "-language:postfixOps"),
   libraryDependencies ++= Seq(
     // test
     "org.scalatest" %% "scalatest" % "3.0.5" % "test",
-    "org.wvlet.airframe" %% "airspec" % airSpecVersion % "test",
 
     // akka
     "com.typesafe.akka" %% "akka-actor" % "2.6.0-M5",
     "com.typesafe.akka" %% "akka-testkit" % "2.6.0-M5" % Test,
   ),
-  testFrameworks += new TestFramework("wvlet.airspec.Framework")
 )
 
 lazy val scalaJsSettings = Seq(
@@ -79,7 +76,11 @@ lazy val scalaJsSettings = Seq(
   scalaJSUseMainModuleInitializer := true
 )
 
-lazy val airSpecSettings = Seq()
+lazy val airSpecSettings = Seq(
+  scalacOptions ++= Seq("-unchecked", "-feature", "-language:implicitConversions", "-language:higherKinds", "-language:postfixOps"),
+  libraryDependencies += "org.wvlet.airframe" %% "airspec" % airSpecVersion % "test",
+  testFrameworks += new TestFramework("wvlet.airspec.Framework"),
+)
 
 name := "training"
 
