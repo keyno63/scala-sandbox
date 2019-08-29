@@ -79,6 +79,8 @@ lazy val scalaJsSettings = Seq(
   scalaJSUseMainModuleInitializer := true
 )
 
+lazy val airSpecSettings = Seq()
+
 name := "training"
 
 version := "0.1"
