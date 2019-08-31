@@ -5,9 +5,12 @@
     <title>The Scala.js Tutorial</title>
 </head>
 <body>
-<button id="click-me-button" type="button" onclick="addClickedMessage()">
+<button id="click-me-button" type="button">
     Click me!
 </button>
+<!-- Include JavaScript dependencies -->
+<script type="text/javascript" src="../target/scala-2.12/scalajs-jsdeps.js"></script>
+<script type="text/javascript" src="http://cdn.jsdelivr.net/jquery/2.2.1/jquery.js"></script>
 <!-- Include Scala.js compiled code -->
 <script type="text/javascript" src="../dist/scalajs.js"></script>
 </body>
