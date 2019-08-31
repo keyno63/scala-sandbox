@@ -84,7 +84,7 @@ lazy val scalaJsSettings = Seq(
   scalaVersion := "2.12.8",
   version := "0.1-SNAPSHOT",
   scalacOptions += "-P:scalajs:sjsDefinedByDefault",
-  scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) },
+  //scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) },
   scalaJSUseMainModuleInitializer := true
 )
 
