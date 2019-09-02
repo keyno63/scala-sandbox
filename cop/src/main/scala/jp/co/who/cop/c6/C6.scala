@@ -1,8 +1,9 @@
 package jp.co.who.cop.c6
 
-class C6 {
-  class Rational(n: Int, d: Int) {
-    println(s"Created $n/$d")
-  }
+object C6 extends App {
+
+  val x = new Rational(2, 3)
+  println(x * x)
+  println(x * 2)
 
 }
