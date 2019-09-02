@@ -3,8 +3,9 @@ package jp.co.who.cop.c6
 class Rational(n: Int, d: Int)  {
   require(d != 0)
   private val g = gcd(n.abs, d.abs)
-  val numer: Int =  n/g
-  val denom: Int = d/g
+  println(n, g, n/g)
+  private val numer =  n/g
+  private val denom = d/g
   def this(n: Int) = this(n, 1)
 
   // numeric
@@ -72,8 +73,9 @@ class Rational(n: Int, d: Int)  {
       this.denom * that.numer
     )
 
-  override def toString = s"$n/$d"
+  override def toString = s"$numer/$denom"
   private def gcd(i: Int, i1: Int): Int = {
+    println(i, i1)
     if (i1 == 0) i
     else gcd(i1, i % i1)
   }
