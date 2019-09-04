@@ -2,7 +2,7 @@ package jp.co.who.cop.c1
 
 import org.scalatest.{FunSuite, Matchers}
 
-class C1Test extends FunSuite with Matchers {
+class C1Spec extends FunSuite with Matchers {
 
   val c1 = new C1
 
