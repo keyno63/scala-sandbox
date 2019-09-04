@@ -9,6 +9,14 @@ lazy val cop = (project in file("cop"))
     exportJars := true
   )
 
+lazy val gof = (project in file("gof"))
+  .settings(commonSettings)
+  .settings(airSpecSettings)
+  .settings(
+    name := "gof",
+    exportJars := true
+  )
+
 lazy val socket = (project in file("socket"))
   .settings(commonSettings)
   .settings(
