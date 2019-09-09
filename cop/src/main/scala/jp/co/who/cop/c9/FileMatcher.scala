@@ -4,20 +4,19 @@ import java.io.File
 
 object FileMatcher {
   private def fileHere: Array[File]  = new java.io.File(".").listFiles
+  def fileMatching(matcher: String => Boolean): Array[File] = {
+    fileHere.filter(file => matcher(file.getName))
+  }
   def fileEnding(query: String): Array[File] =
     for (file <- fileHere; if file.getName.endsWith(query))
       yield file
   def fileEnding1(query: String): Array[File] =
-    fileHere.filter(_.getName.endsWith(query))
+    fileMatching(_.endsWith(query))
 
   def fileContaining(query: String): Array[File] =
-    fileHere.filter(_.getName.contains(query))
+    fileMatching(_.contains(query))
 
   def fileRegex(query: String): Array[File] =
-    fileHere.filter(_.getName.matches(query))
-
-  def fileMatching(query: String, matcher: (String, String) => Boolean): Array[File] = {
-    fileHere.filter(file => matcher(file.getName, query))
-  }
+    fileMatching(_.matches(query))
 
 }
