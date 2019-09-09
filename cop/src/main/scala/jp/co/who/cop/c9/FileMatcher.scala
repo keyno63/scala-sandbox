@@ -16,7 +16,7 @@ object FileMatcher {
   def fileRegex(query: String): Array[File] =
     fileHere.filter(_.getName.matches(query))
 
-  def fileMatching(query: String, matcher: (String, String) => Boolean) = {
+  def fileMatching(query: String, matcher: (String, String) => Boolean): Array[File] = {
     fileHere.filter(file => matcher(file.getName, query))
   }
 
