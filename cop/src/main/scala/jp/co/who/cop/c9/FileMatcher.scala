@@ -4,7 +4,7 @@ import java.io.File
 
 object FileMatcher {
   private def fileHere: Array[File]  = new java.io.File(".").listFiles
-  def fileEnding(query: String) =
+  def fileEnding(query: String): Array[File] =
     for (file <- fileHere; if file.getName.endsWith(query))
       yield file
   def fileEnding1(query: String): Array[File] =
