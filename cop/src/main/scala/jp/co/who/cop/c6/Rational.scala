@@ -3,7 +3,6 @@ package jp.co.who.cop.c6
 class Rational(n: Int, d: Int)  {
   require(d != 0)
   private val g = gcd(n.abs, d.abs)
-  println(n, g, n/g)
   private val numer =  n/g
   private val denom = d/g
   def this(n: Int) = this(n, 1)
