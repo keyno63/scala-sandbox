@@ -30,6 +30,7 @@ class RationalSpec extends AirSpec {
     while (i < z.length) {
       val a = new Rational(z(i)._1, z(i)._2)
       a.toString shouldBe expect(i)
+      i += 1
     }
   }
 
