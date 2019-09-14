@@ -112,7 +112,7 @@ name := "training"
 
 version := "0.1"
 
-scalaVersion := "2.12.8"
+scalaVersion := "2.12.9"
 
 val airSpecVersion = "19.8.8"
 
