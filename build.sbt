@@ -69,6 +69,23 @@ lazy val scalajs = (project in file("scalajs"))
     artifactPath in (Compile, fastOptJS) := baseDirectory.value / "dist" / "scalajs.js",
   )
 
+lazy val circeVersion = "0.6.1"
+lazy val amm = (project in file("amm"))
+  .settings(commonSettings)
+  .settings(
+    name := "amm",
+    libraryDependencies ++= Seq(
+    "io.circe" %% "circe-core",
+    "io.circe" %% "circe-generic",
+    "io.circe" %% "circe-parser"
+    ).map(_ % circeVersion),
+    libraryDependencies ++= Seq(
+      "org.skinny-framework" %% "skinny-http-client" % "3.0.1",
+      "log4j" % "log4j" % "1.2.17",
+      "org.slf4j" % "slf4j-log4j12" % "1.7.26" % Test,
+    )
+  )
+
 lazy val commonSettings = Seq(
   scalaVersion := "2.12.8",
   version := "0.1-SNAPSHOT",
