@@ -7,7 +7,7 @@ import play.api.data.Form
 import play.api.data.Forms._
 import play.api.i18n.{I18nSupport, Messages, MessagesApi}
 import play.api.libs.json.Json
-import play.api.mvc.{AbstractController, ControllerComponents}
+import play.api.mvc.{AbstractController, Action, AnyContent, ControllerComponents}
 
 case class PostRequests(body: String)
 
@@ -18,11 +18,11 @@ class PostsController @Inject()(cc: ControllerComponents, override val messagesA
       "post" -> text(minLength = 1, maxLength = 10)
     )(PostRequests.apply)(PostRequests.unapply))
 
-  def get = Action { implicit request =>
+  def get: Action[AnyContent] = Action { implicit request =>
     Ok(Json.toJson(Response(Meta(200), Some(Json.obj("posts" -> Json.toJson(PostRepository.findAll))))))
   }
 
-  def post = Action { implicit request =>
+  def post: Action[AnyContent] = Action { implicit request =>
     form.bindFromRequest.fold(
       error => {
         val errorMessage = Messages(error.errors("post").head.message)
