@@ -48,7 +48,12 @@ lazy val dashboard = (project in file("dashboard"))
       "org.scalikejdbc"        %% "scalikejdbc-play-initializer" % "2.7.1-scalikejdbc-3.3",
       "org.scalatestplus.play" %% "scalatestplus-play" % "4.0.1" % Test,
       "com.h2database"         %  "h2"                           % "1.4.192",
-    )
+    ),
+    libraryDependencies ++= Seq(
+      "io.circe" %% "circe-core",
+      "io.circe" %% "circe-generic",
+      "io.circe" %% "circe-parser"
+    ).map(_ % circeVersion)
   )
 
 lazy val grammar = (project in file("grammar"))
