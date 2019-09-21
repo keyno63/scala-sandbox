@@ -20,7 +20,12 @@ class HelloController @Inject()(cc: ControllerComponents)
   def plus(a: Option[Int], b: Option[Int]) =
     Action { implicit request: Request[AnyContent] =>
       Ok {
-        val x = a.getOrElse(0) + b.getOrElse(0)
+        val x = (a, b) match {
+          case (Some(y), Some(z)) => y + z
+          case (Some(y), _) => y
+          case (_, Some(z)) => z
+          case (_, _) => 0
+        }
         s"$x"
       }
     }
