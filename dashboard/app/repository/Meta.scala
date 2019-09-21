@@ -1,8 +1,6 @@
-package controllers
+package repository
 
-import play.api.libs.json.Json
-import play.api.libs.json.JsValue
-import play.api.libs.json.Writes
+import play.api.libs.json.{JsValue, Json, Writes}
 
 case class Meta(status: Int, errorMessage: Option[String] = None)
 

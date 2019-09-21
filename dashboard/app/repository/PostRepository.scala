@@ -1,5 +1,6 @@
-package controllers
+package repository
 
+import form.Post
 import scalikejdbc._
 import scalikejdbc.jsr310._
 

@@ -7,5 +7,5 @@ class TutorialAppSpec extends AirSpec {
 
   info(s"info log")
   // TODO: add test, later.
-  def myTest(): Unit = assert(1 == 1)
+  //def myTest(): Unit = assert(1 == 1)
 }

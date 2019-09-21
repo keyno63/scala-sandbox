@@ -7,7 +7,7 @@ import play.api.inject.guice.GuiceApplicationBuilder
 import wvlet.airspec.AirSpec
 
 class TextboardSpec
-  extends PlaySpec with AirSpec with GuiceOneServerPerTest
+  extends PlaySpec with GuiceOneServerPerTest
     with OneBrowserPerSuite with HtmlUnitFactory {
 
   override def fakeApplication(): Application =
@@ -17,6 +17,7 @@ class TextboardSpec
         "db.default.url" -> "jdbc:h2:mem:test;MODE=MYSQL")
       .build()
 
+  /*
   def `GETリクエスト 何も投稿しない場合はメッセージを表示しない`(): Unit = {
     go to s"http://localhost:$port/"
     pageTitle shouldBe "Scala Text Textboard"
@@ -75,4 +76,5 @@ class TextboardSpec
       error.head.text shouldBe "The message is too long."
     }
   }
+  */
 }
