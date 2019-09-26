@@ -66,6 +66,15 @@ lazy val grammar = (project in file("grammar"))
     )
   )
 
+lazy val gcpclient = (project in file("gcpclient"))
+  .settings(commonSettings)
+  .settings(
+    name := "gcpclient",
+    libraryDependencies ++=Seq(
+      "com.google.cloud" % "google-cloud-storage" % "1.87.0"
+    )
+  )
+
 lazy val scalajs = (project in file("scalajs"))
   .enablePlugins(ScalaJSPlugin)
   .settings(scalaJsSpecSettings)
