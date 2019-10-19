@@ -10,4 +10,6 @@ object Cps {
   def convert(a:Int, func: Int => Int): Int = {
     func(a)
   }
+
+  def g: A => B = _.x
 }
