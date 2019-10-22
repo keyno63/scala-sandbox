@@ -1,6 +1,7 @@
 package jp.co.who.monad.typeclass
 
 import Who._
+import Sum._
 
 object Main extends App {
 
@@ -12,4 +13,7 @@ object Main extends App {
   println(d.whoMethod) //=> Double
   println(s.whoMethod)
 
+  // test Sum object.
+  val x = List(1,2,3,4).summ
+  println(x)
 }

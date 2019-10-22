@@ -1,4 +1,4 @@
-package jp.co.who.monad
+package jp.co.who.monad.sample
 
 object Main extends App {
 

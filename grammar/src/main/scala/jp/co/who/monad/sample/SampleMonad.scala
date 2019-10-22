@@ -1,4 +1,4 @@
-package jp.co.who.monad
+package jp.co.who.monad.sample
 
 object SampleMonad {
   def apply[A](id: A): SampleMonad[A] = new SampleMonad(id)
