@@ -8,8 +8,8 @@ object Sum {
   }
 
   // implicit conversion 内で実行してくれる関数の定義
-  implicit def Sum: Sum[List[Int]] = new Sum[List[Int]] {
-    override def sumx(x: List[Int]): Int = x.foldLeft(0)( _ + _)
+  implicit def Sum(implicit mi: Monoid[Int]): Sum[List[Int]] = new Sum[List[Int]] {
+    override def sumx(x: List[Int]): Int = x.foldLeft(mi.mzero)(mi.mappend)
   }
 
   // implicit class の基底クラス
@@ -27,4 +27,34 @@ object Sum {
     override def self: T = v
   }
 
+}
+
+// Monoid
+trait Monoid[A] {
+  def mappend(a: A, b: A): A
+  def mzero: A
+}
+object Monoid {
+
+  // Int の総和
+  implicit val IntMonoid = new Monoid[Int] {
+    def mappend(a: Int, b: Int): Int = a + b
+    def mzero: Int = 0
+  }
+
+  // Int の総積
+  val multiMonoid: Monoid[Int] = new Monoid[Int] {
+    def mappend(a: Int, b: Int): Int = a * b
+    def mzero: Int = 1
+  }
+
+  implicit val StringMonoid = new Monoid[String] {
+    def mappend(a: String, b: String): String = a + b
+    def mzero: String = ""
+  }
+
+  def sum[A: Monoid](xs: List[A]): A = {
+    val m = implicitly[Monoid[A]]
+    xs.foldLeft(m.mzero)(m.mappend)
+  }
 }
