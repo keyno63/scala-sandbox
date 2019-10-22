@@ -57,9 +57,28 @@ lazy val dashboard = (project in file("dashboard"))
     ).map(_ % circeVersion)
   )
 
+import Dependency._
 lazy val grammar = (project in file("grammar"))
   .settings(commonSettings)
   .settings(airSpecSettings)
+  .settings(
+    // cats settings.
+    libraryDependencies ++= Seq(
+      catsCore,
+      catsFree,
+      catsMtl,
+      simulacrum,
+      specs2Core % Test, specs2Scalacheck % Test, scalacheck % Test,
+      macroParadise, kindProjector, resetAllAttrs
+    ),
+    scalacOptions ++= Seq(
+      "-deprecation",
+      "-encoding", "UTF-8",
+      "-Ypartial-unification",
+      "-feature",
+      "-language:_"
+    )
+  )
   .settings(
     name := "grammar",
     libraryDependencies ++=Seq(
