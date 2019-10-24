@@ -5,8 +5,6 @@ object SampleMonad {
 }
 
 class SampleMonad[A](id: A) {
-  //def foreach(value: Any) = ???
-
 
   def map[B](f: A => B): SampleMonad[B] = {
     val a: B = f(this.id)
