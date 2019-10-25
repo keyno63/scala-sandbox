@@ -68,7 +68,7 @@ lazy val grammar = (project in file("grammar"))
       catsFree,
       catsMtl,
       simulacrum,
-      specs2Core % Test, specs2Scalacheck % Test, scalacheck % Test,
+      //specs2Core % Test, specs2Scalacheck % Test, scalacheck % Test,
       macroParadise, kindProjector, resetAllAttrs
     ),
     scalacOptions ++= Seq(
