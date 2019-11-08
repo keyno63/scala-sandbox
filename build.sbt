@@ -48,7 +48,9 @@ lazy val dashboard = (project in file("dashboard"))
       "org.scalikejdbc"        %% "scalikejdbc-play-initializer" % "2.7.1-scalikejdbc-3.3",
       "org.scalatestplus.play" %% "scalatestplus-play"           % "4.0.1" % Test,
       "com.h2database"         %  "h2"                           % "1.4.192",
-      "com.dripower"           %% "play-circe"                   % "2611.0"
+      "com.dripower"           %% "play-circe"                   % "2611.0",
+      // https://mvnrepository.com/artifact/org.postgresql/postgresql
+      "org.postgresql" % "postgresql" % "42.2.8"
     ),
     libraryDependencies ++= Seq(
       "io.circe" %% "circe-core",
