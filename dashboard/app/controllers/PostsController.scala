@@ -8,7 +8,6 @@ import play.api.data.Form
 import play.api.data.Forms._
 import play.api.i18n.{I18nSupport, Messages, MessagesApi}
 import play.api.libs.json.Json
-import io.circe._
 import play.api.libs.circe.Circe
 import io.circe.syntax._
 import io.circe.generic.auto._
