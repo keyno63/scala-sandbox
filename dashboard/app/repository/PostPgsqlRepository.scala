@@ -10,13 +10,13 @@ object PostPgsqlRepository {
   val password = "postgres"
   ConnectionPool.singleton(url, user, password)
 
-  def findAll: Seq[Post] = DB readOnly { implicit session =>
-    sql"SELECT id, body, date FROM posts".map { rs =>
+  def findAll: Seq[Post] = DB("pgsql") readOnly { implicit session =>
+    sql"SELECT name, date FROM company".map { rs =>
       Post(rs.long("id"), rs.string("body"), rs.offsetDateTime("date"))
     }.list().apply()
   }
 
-  def add(post: Post): Unit = DB localTx { implicit session =>
+  def add(post: Post): Unit = DB("pgsql") localTx { implicit session =>
     sql"INSERT INTO posts (body, date) VALUES (${post.body}, ${post.date})".update().apply()
   }
 }
