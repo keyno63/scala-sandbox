@@ -4,11 +4,6 @@ import scalikejdbc._
 import scalikejdbc.jsr310._
 
 object PostPgsqlRepository {
-  // データベースに接続
-  val url = "jdbc:postgresql://localhost:5432/postgres"
-  val user = "postgres"
-  val password = "postgres"
-  ConnectionPool.singleton(url, user, password)
 
   def findAll: Seq[Post] = DB("pgsql") readOnly { implicit session =>
     sql"SELECT name, date FROM company".map { rs =>
