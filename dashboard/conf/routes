@@ -6,3 +6,6 @@ POST   /    controllers.TextboardController.post()
 
 GET    /posts   controllers.PostsController.get()
 POST   /posts   controllers.PostsController.post()
+
+GET    /pgsql/posts   controllers.DBController.get()
+POST   /pgsql/posts   controllers.DBController.post()
