@@ -9,7 +9,7 @@ import play.api.data.Forms.{mapping, text}
 import play.api.i18n.{I18nSupport, Messages, MessagesApi}
 import play.api.libs.json.Json
 import play.api.mvc.{AbstractController, Action, AnyContent, ControllerComponents}
-import repository.{Meta, PostPgsqlRepository, PostRepository, Response}
+import repository.{Meta, PostPgsqlRepository, Response}
 
 class DBController @Inject()(cc: ControllerComponents, override val messagesApi: MessagesApi)
   extends AbstractController(cc)  with I18nSupport {
