@@ -37,6 +37,7 @@ lazy val dashboard = (project in file("dashboard"))
   .settings(airSpecSettings)
   .settings(
     name := "dashboard",
+    fork in run := true,
     libraryDependencies ++=Seq(
       filters,
       guice,
