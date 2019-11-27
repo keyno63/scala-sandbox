@@ -19,7 +19,8 @@ class DBController @Inject()(cc: ControllerComponents, override val messagesApi:
     )(PostRequests.apply)(PostRequests.unapply))
 
   def get: Action[AnyContent] = Action { implicit request =>
-    Ok(Json.toJson(Response(Meta(200), Some(Json.obj("posts" -> Json.toJson(PostPgsqlRepository.findAll))))))
+    Ok(Json.toJson(Response(Meta(200),
+      Some(Json.obj("posts" -> Json.toJson(PostPgsqlRepository.findAll))))))
   }
 
   def post: Action[AnyContent] = Action { implicit request =>
