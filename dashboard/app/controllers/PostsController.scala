@@ -25,7 +25,14 @@ class PostsController @Inject()(cc: ControllerComponents, override val messagesA
     )(PostRequests.apply)(PostRequests.unapply))
 
   def get: Action[AnyContent] = Action { implicit request =>
-    Ok(Json.toJson(Response(Meta(200), Some(Json.obj("posts" -> Json.toJson(PostRepository.findAll))))))
+    Ok(
+      Json.toJson(
+        Response(Meta(200),
+          Some(
+            Json.obj("posts" -> Json.toJson(PostRepository.findAll)))
+        )
+      )
+    )
     //Ok(Response(Meta(200), Some(Json.obj("posts" -> Json.toJson(PostRepository.findAll)))).asJson)
   }
 
