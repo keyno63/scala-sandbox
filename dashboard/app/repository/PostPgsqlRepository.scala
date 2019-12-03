@@ -7,7 +7,11 @@ object PostPgsqlRepository {
 
   def findAll: Seq[Post] = NamedDB('pgsql) readOnly { implicit session =>
     sql"SELECT name, date FROM company".map { rs =>
-      Post(rs.long("id"), rs.string("body"), rs.offsetDateTime("date"))
+      Post(
+        rs.long("id"),
+        rs.string("body"),
+        rs.offsetDateTime("date")
+      )
     }.list().apply()
   }
 
