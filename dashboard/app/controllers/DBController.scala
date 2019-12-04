@@ -3,7 +3,7 @@ package controllers
 import java.time.OffsetDateTime
 
 import form.Post
-import javax.inject.{Inject, Singleton}
+import javax.inject.Inject
 import play.api.data.Form
 import play.api.data.Forms.{mapping, text}
 import play.api.i18n.{I18nSupport, Messages, MessagesApi}
