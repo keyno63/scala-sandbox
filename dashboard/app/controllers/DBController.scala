@@ -64,4 +64,12 @@ class DBController @Inject()(cc: ControllerComponents, override val messagesApi:
     Ok("")
   }
 
+  def get3(): Action[AnyContent] = Action { implicit request =>
+    Ok("")
+  }
+
+  def post3(): Action[AnyContent] = Action { implicit request =>
+    Ok("")
+  }
+
 }
