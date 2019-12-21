@@ -72,4 +72,6 @@ class DBController @Inject()(cc: ControllerComponents, override val messagesApi:
     Ok("")
   }
 
+
+
 }
