@@ -1,6 +1,5 @@
 package jp.co.who.monad.typeclass
 
-
 object FoldLeftList {
   def foldLeft[A, B](
     xs: List[A],
