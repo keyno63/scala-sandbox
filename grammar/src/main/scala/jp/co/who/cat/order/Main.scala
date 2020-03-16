@@ -1,9 +1,5 @@
 package jp.co.who.cat.order
 
-import cats._
-import cats.data._
-import cats.implicits._
-
 object Main {
 
   val ret0 = 1 > 2.0
