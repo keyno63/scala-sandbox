@@ -45,11 +45,10 @@ lazy val dashboard = (project in file("dashboard"))
       evolutions,
       "org.scalikejdbc"        %% "scalikejdbc"                  % scalikejdbcVersion,
       "org.scalikejdbc"        %% "scalikejdbc-config"           % scalikejdbcVersion,
-      "org.scalikejdbc"        %% "scalikejdbc-jsr310"           % scalikejdbcVersion,
-      "org.scalikejdbc"        %% "scalikejdbc-play-initializer" % "2.7.1-scalikejdbc-3.3",
+      "org.scalikejdbc"        %% "scalikejdbc-play-initializer" % "2.8.0-scalikejdbc-3.4",
       "org.scalatestplus.play" %% "scalatestplus-play"           % "4.0.1" % Test,
       "com.h2database"         %  "h2"                           % "1.4.192",
-      "com.dripower"           %% "play-circe"                   % "2611.0",
+      "com.dripower"           %% "play-circe"                   % "2812.0",
       // https://mvnrepository.com/artifact/org.postgresql/postgresql
       "org.postgresql" % "postgresql" % "42.2.8",
       // https://mvnrepository.com/artifact/mysql/mysql-connector-java
@@ -126,7 +125,7 @@ lazy val amm = (project in file("amm"))
   )
 
 lazy val commonSettings = Seq(
-  scalaVersion := "2.12.8",
+  scalaVersion := scalaBaseVersion,
   version := "0.1-SNAPSHOT",
   libraryDependencies ++= Seq(
     // test
@@ -145,7 +144,7 @@ lazy val airSpecSettings = Seq(
 )
 
 lazy val scalaJsSettings = Seq(
-  scalaVersion := "2.12.8",
+  scalaVersion := scalaBaseVersion,
   version := "0.1-SNAPSHOT",
   scalacOptions += "-P:scalajs:sjsDefinedByDefault",
   //scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) },
@@ -168,8 +167,12 @@ name := "training"
 
 version := "0.1"
 
-scalaVersion := "2.12.9"
+scalaVersion := scalaBaseVersion
 
 val airSpecVersion = "19.8.8"
 
-val scalikejdbcVersion = "2.5.2"
+val scalikejdbcVersion = "3.4.0"
+
+val scalaBaseVersion = "2.12.10"
+
+val scalikejdbcInitializerVersion = "2.8.0-scalikejdbc-3.4"
