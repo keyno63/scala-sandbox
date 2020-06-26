@@ -1,40 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ScalaCompilerConfiguration">
-    <profile name="sbt 1" modules="amm,gcpclient,socket,training,training_1159" />
-    <profile name="sbt 2" modules="Akka VoIP common library,Akka VoIP server,cop,cop-training library,gcpjs,gof,sip,training library">
+    <profile name="sbt 1" modules="amm,gcpclient,socket,training,training_1898" />
+    <profile name="sbt 2" modules="cop,gof,sip">
       <option name="postfixOps" value="true" />
       <option name="implicitConversions" value="true" />
       <option name="higherKinds" value="true" />
       <option name="uncheckedWarnings" value="true" />
       <option name="featureWarnings" value="true" />
     </profile>
-    <profile name="sbt 3" modules="dashboard,grammer,training-dashboard">
-      <option name="postfixOps" value="true" />
-      <option name="implicitConversions" value="true" />
-      <option name="higherKinds" value="true" />
-      <option name="deprecationWarnings" value="true" />
-      <option name="uncheckedWarnings" value="true" />
-      <option name="featureWarnings" value="true" />
-      <parameters>
-        <parameter value="-encoding" />
-        <parameter value="utf8" />
-      </parameters>
-    </profile>
-    <profile name="sbt 4" modules="scalajs">
-      <option name="postfixOps" value="true" />
-      <option name="implicitConversions" value="true" />
-      <option name="higherKinds" value="true" />
-      <option name="uncheckedWarnings" value="true" />
-      <option name="featureWarnings" value="true" />
-      <parameters>
-        <parameter value="-P:scalajs:sjsDefinedByDefault" />
-      </parameters>
-      <plugins>
-        <plugin path="$USER_HOME$/.ivy2/cache/org.scala-js/scalajs-compiler_2.12.10/jars/scalajs-compiler_2.12.10-0.6.28.jar" />
-      </plugins>
-    </profile>
-    <profile name="sbt 5" modules="grammar">
+    <profile name="sbt 3" modules="grammar">
       <option name="postfixOps" value="true" />
       <option name="implicitConversions" value="true" />
       <option name="higherKinds" value="true" />
@@ -48,8 +23,33 @@
         <parameter value="-language:_" />
       </parameters>
       <plugins>
-        <plugin path="$USER_HOME$/.ivy2/cache/org.scalamacros/paradise_2.12.10/jars/paradise_2.12.10-2.1.0.jar" />
-        <plugin path="$USER_HOME$/.ivy2/cache/org.spire-math/kind-projector_2.12/jars/kind-projector_2.12-0.9.4.jar" />
+        <plugin path="$USER_HOME$/.cache/coursier/v1/https/repo1.maven.org/maven2/org/spire-math/kind-projector_2.12/0.9.4/kind-projector_2.12-0.9.4.jar" />
+        <plugin path="$USER_HOME$/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalamacros/paradise_2.12.10/2.1.0/paradise_2.12.10-2.1.0.jar" />
+      </plugins>
+    </profile>
+    <profile name="sbt 4" modules="dashboard">
+      <option name="postfixOps" value="true" />
+      <option name="implicitConversions" value="true" />
+      <option name="higherKinds" value="true" />
+      <option name="deprecationWarnings" value="true" />
+      <option name="uncheckedWarnings" value="true" />
+      <option name="featureWarnings" value="true" />
+      <parameters>
+        <parameter value="-encoding" />
+        <parameter value="utf8" />
+      </parameters>
+    </profile>
+    <profile name="sbt 5" modules="scalajs">
+      <option name="postfixOps" value="true" />
+      <option name="implicitConversions" value="true" />
+      <option name="higherKinds" value="true" />
+      <option name="uncheckedWarnings" value="true" />
+      <option name="featureWarnings" value="true" />
+      <parameters>
+        <parameter value="-P:scalajs:sjsDefinedByDefault" />
+      </parameters>
+      <plugins>
+        <plugin path="$USER_HOME$/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-js/scalajs-compiler_2.12.10/0.6.28/scalajs-compiler_2.12.10-0.6.28.jar" />
       </plugins>
     </profile>
   </component>
