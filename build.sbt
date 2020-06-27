@@ -124,6 +124,17 @@ lazy val amm = (project in file("amm"))
     )
   )
 
+lazy val zio = (project in file("zio"))
+  .settings(commonSettings)
+  .settings(
+    name := "zio",
+    libraryDependencies ++= Seq(
+      "dev.zio" %% "zio" % "1.0.0-RC21"
+    )
+  )
+
+
+// settings
 lazy val commonSettings = Seq(
   scalaVersion := scalaBaseVersion,
   version := "0.1-SNAPSHOT",
