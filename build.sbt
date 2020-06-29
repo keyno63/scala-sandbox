@@ -45,7 +45,7 @@ lazy val dashboard = (project in file("dashboard"))
       evolutions,
       "org.scalikejdbc"        %% "scalikejdbc"                  % scalikejdbcVersion,
       "org.scalikejdbc"        %% "scalikejdbc-config"           % scalikejdbcVersion,
-      "org.scalikejdbc"        %% "scalikejdbc-play-initializer" % "2.8.0-scalikejdbc-3.4",
+      "org.scalikejdbc"        %% "scalikejdbc-play-initializer" % scalikejdbcInitializerVersion,
       "org.scalatestplus.play" %% "scalatestplus-play"           % "4.0.1" % Test,
       "com.h2database"         %  "h2"                           % "1.4.192",
       "com.dripower"           %% "play-circe"                   % "2812.0",
@@ -107,7 +107,6 @@ lazy val scalajs = (project in file("scalajs"))
     artifactPath in (Compile, fastOptJS) := baseDirectory.value / "dist" / "scalajs.js",
   )
 
-lazy val circeVersion = "0.6.1"
 lazy val amm = (project in file("amm"))
   .settings(commonSettings)
   .settings(
@@ -129,7 +128,7 @@ lazy val zio = (project in file("zio"))
   .settings(
     name := "zio",
     libraryDependencies ++= Seq(
-      "dev.zio" %% "zio" % "1.0.0-RC21"
+      "dev.zio" %% "zio" % zioVersion
     )
   )
 
@@ -187,3 +186,7 @@ val scalikejdbcVersion = "3.4.0"
 val scalaBaseVersion = "2.12.10"
 
 val scalikejdbcInitializerVersion = "2.8.0-scalikejdbc-3.4"
+
+val zioVersion = "1.0.0-RC21"
+
+lazy val circeVersion = "0.6.1"
