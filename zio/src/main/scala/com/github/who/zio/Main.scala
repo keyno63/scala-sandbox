@@ -2,12 +2,12 @@ package com.github.who.zio
 
 import java.io.IOException
 
-import zio.ZIO
+import zio.{ExitCode, URIO, ZIO}
 import zio.console._
 
 // https://zio.dev/docs/getting_started.html
 object Main extends zio.App {
-  def run(args: List[String]) =
+  def run(args: List[String]): URIO[Console, ExitCode] =
     myAppLogic.exitCode
 
   val myAppLogic: ZIO[Console, IOException, Unit] =
