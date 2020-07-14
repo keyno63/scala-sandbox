@@ -138,7 +138,7 @@ lazy val `akka-sample` = (project in file("akka-sample"))
     name := "akka-sample",
     libraryDependencies ++= Seq(
       "com.typesafe.akka" %% "akka-http"           % "10.1.12",
-      "com.typesafe.akka" %% "akka-stream"         % "2.6.5"
+      "com.typesafe.akka" %% "akka-stream"         % akkaVersion
     )
   )
 
@@ -152,8 +152,8 @@ lazy val commonSettings = Seq(
     "org.scalatest" %% "scalatest" % "3.0.5" % "test",
 
     // akka
-    "com.typesafe.akka" %% "akka-actor" % "2.6.5",
-    "com.typesafe.akka" %% "akka-testkit" % "2.6.5" % Test,
+    "com.typesafe.akka" %% "akka-actor" % akkaVersion,
+    "com.typesafe.akka" %% "akka-testkit" % akkaVersion % Test,
   ),
 )
 
@@ -193,10 +193,12 @@ val airSpecVersion = "19.8.8"
 
 val scalikejdbcVersion = "3.4.0"
 
-val scalaBaseVersion = "2.12.10"
+val scalaBaseVersion = "2.12.12"
 
 val scalikejdbcInitializerVersion = "2.8.0-scalikejdbc-3.4"
 
 val zioVersion = "1.0.0-RC21"
 
 lazy val circeVersion = "0.6.1"
+
+lazy val akkaVersion = "2.6.5"
