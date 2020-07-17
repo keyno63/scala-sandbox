@@ -46,7 +46,7 @@ lazy val dashboard = (project in file("dashboard"))
       "org.scalikejdbc"        %% "scalikejdbc"                  % scalikejdbcVersion,
       "org.scalikejdbc"        %% "scalikejdbc-config"           % scalikejdbcVersion,
       "org.scalikejdbc"        %% "scalikejdbc-play-initializer" % scalikejdbcInitializerVersion,
-      "org.scalatestplus.play" %% "scalatestplus-play"           % "5.0.1" % Test,
+      "org.scalatestplus.play" %% "scalatestplus-play"           % "5.1.0" % Test,
       "com.h2database"         %  "h2"                           % "1.4.200",
       "com.dripower"           %% "play-circe"                   % "2812.0",
       // https://mvnrepository.com/artifact/org.postgresql/postgresql
@@ -170,7 +170,7 @@ lazy val scalaJsSettings = Seq(
   //scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) },
   scalaJSUseMainModuleInitializer := true,
   libraryDependencies ++= Seq(
-    "org.scala-js" %%% "scalajs-dom" % "0.9.7",
+    "org.scala-js" %%% "scalajs-dom" % "1.0.0",
     "org.querki" %%% "jquery-facade" % "1.2",
   ),
   skip in packageJSDependencies := false,
@@ -193,12 +193,12 @@ val airSpecVersion = "19.8.8"
 
 val scalikejdbcVersion = "3.4.0"
 
-val scalaBaseVersion = "2.12.10"
+val scalaBaseVersion = "2.12.12"
 
 val scalikejdbcInitializerVersion = "2.8.0-scalikejdbc-3.4"
 
 val zioVersion = "1.0.0-RC21"
 
-lazy val circeVersion = "0.6.1"
+lazy val circeVersion = "0.13.0"
 
 lazy val akkaVersion = "2.6.5"

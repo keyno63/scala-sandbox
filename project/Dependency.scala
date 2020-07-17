@@ -8,7 +8,7 @@ object Dependency {
   val catsMtl = "org.typelevel" %% "cats-mtl-core" % "0.2.1"
 
   val simulacrum = "com.github.mpilquist" %% "simulacrum" % "0.11.0"
-  val macroParadise = compilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
+  val macroParadise = compilerPlugin("org.scalamacros" % "paradise" % "2.1.1" cross CrossVersion.full)
   val kindProjector = compilerPlugin("org.spire-math" %% "kind-projector" % "0.9.4")
   val resetAllAttrs = "org.scalamacros" %% "resetallattrs" % "1.0.0"
 

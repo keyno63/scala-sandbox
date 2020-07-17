@@ -23,8 +23,8 @@
         <parameter value="-language:_" />
       </parameters>
       <plugins>
+        <plugin path="$USER_HOME$/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalamacros/paradise_2.12.12/2.1.1/paradise_2.12.12-2.1.1.jar" />
         <plugin path="$USER_HOME$/.cache/coursier/v1/https/repo1.maven.org/maven2/org/spire-math/kind-projector_2.12/0.9.4/kind-projector_2.12-0.9.4.jar" />
-        <plugin path="$USER_HOME$/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scalamacros/paradise_2.12.10/2.1.0/paradise_2.12.10-2.1.0.jar" />
       </plugins>
     </profile>
     <profile name="sbt 4" modules="dashboard">
@@ -49,7 +49,7 @@
         <parameter value="-P:scalajs:sjsDefinedByDefault" />
       </parameters>
       <plugins>
-        <plugin path="$USER_HOME$/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-js/scalajs-compiler_2.12.10/0.6.28/scalajs-compiler_2.12.10-0.6.28.jar" />
+        <plugin path="$USER_HOME$/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-js/scalajs-compiler_2.12.12/0.6.33/scalajs-compiler_2.12.12-0.6.33.jar" />
       </plugins>
     </profile>
   </component>
