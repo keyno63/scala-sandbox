@@ -46,13 +46,13 @@ lazy val dashboard = (project in file("dashboard"))
       "org.scalikejdbc"        %% "scalikejdbc"                  % scalikejdbcVersion,
       "org.scalikejdbc"        %% "scalikejdbc-config"           % scalikejdbcVersion,
       "org.scalikejdbc"        %% "scalikejdbc-play-initializer" % scalikejdbcInitializerVersion,
-      "org.scalatestplus.play" %% "scalatestplus-play"           % "4.0.1" % Test,
-      "com.h2database"         %  "h2"                           % "1.4.192",
+      "org.scalatestplus.play" %% "scalatestplus-play"           % "5.0.1" % Test,
+      "com.h2database"         %  "h2"                           % "1.4.200",
       "com.dripower"           %% "play-circe"                   % "2812.0",
       // https://mvnrepository.com/artifact/org.postgresql/postgresql
-      "org.postgresql" % "postgresql" % "42.2.8",
+      "org.postgresql" % "postgresql" % "42.2.14",
       // https://mvnrepository.com/artifact/mysql/mysql-connector-java
-      "mysql" % "mysql-connector-java" % "8.0.18"
+      "mysql" % "mysql-connector-java" % "8.0.21"
     ),
     libraryDependencies ++= Seq(
       "io.circe" %% "circe-core",
@@ -193,7 +193,7 @@ val airSpecVersion = "19.8.8"
 
 val scalikejdbcVersion = "3.4.0"
 
-val scalaBaseVersion = "2.12.12"
+val scalaBaseVersion = "2.12.10"
 
 val scalikejdbcInitializerVersion = "2.8.0-scalikejdbc-3.4"
 
