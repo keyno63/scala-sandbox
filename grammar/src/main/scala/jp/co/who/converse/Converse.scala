@@ -12,4 +12,4 @@ class Human extends Animal
 //
 class MyTypeConvariant[+A](a: A)
 class MyTypeInvariant[-A](a: A)
-class MyType[A](a: A)
+class MyType[+A](a: A)
