@@ -1,4 +1,4 @@
-package jp.co.who.monad
+package jp.co.who.monad.cont
 
 object Continue {
   def pure[R, A](a: A): Continue[R, A] =
@@ -14,7 +14,7 @@ final case class Continue[R, A](run:(A=>R)=>R) {
     flatMap(a => Continue.pure(f(a)))
 }
 
-object Count extends App {
+object FizzBuzz extends App {
   def fizzCont(i: Int): Continue[String, Int] = Continue { cont =>
     if (i % 3 == 0) "Fizz"
     else cont(i)
