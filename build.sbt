@@ -98,14 +98,14 @@ lazy val gcpclient = (project in file("gcpclient"))
     )
   )
 
-lazy val scalajs = (project in file("scalajs"))
-  .enablePlugins(ScalaJSPlugin)
-  .settings(scalaJsSpecSettings)
-  .settings(scalaJsSettings)
-  .settings(
-    name := "scalajs",
-    artifactPath in (Compile, fastOptJS) := baseDirectory.value / "dist" / "scalajs.js",
-  )
+//lazy val scalajs = (project in file("scalajs"))
+//  .enablePlugins(ScalaJSPlugin)
+//  .settings(scalaJsSpecSettings)
+//  .settings(scalaJsSettings)
+//  .settings(
+//    name := "scalajs",
+//    artifactPath in (Compile, fastOptJS) := baseDirectory.value / "dist" / "scalajs.js",
+//  )
 
 lazy val amm = (project in file("amm"))
   .settings(commonSettings)
