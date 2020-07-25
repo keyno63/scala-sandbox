@@ -12,8 +12,8 @@ class HelloController @Inject()(cc: ControllerComponents)
     Action { implicit request: Request[AnyContent] =>
       Ok {
         name
-          .map(s => Messages("hello", s))
-          .getOrElse(Messages("noQuery"))
+          .map(s => Messages(s"Hello, $s!", s))
+          .getOrElse(Messages("""Please give a name as a query parameter named "name"."""))
       }
     }
 
