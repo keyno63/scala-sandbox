@@ -142,6 +142,19 @@ lazy val `akka-sample` = (project in file("akka-sample"))
     )
   )
 
+lazy val `htt4s-sample` = (project in file("htt4s-sample"))
+  .settings(commonSettings)
+  .settings(
+    name := "htt4s-sample",
+    libraryDependencies ++= Seq(
+      "org.http4s" %% "http4s-server"       % htt4sVersion,
+      "org.http4s" %% "http4s-blaze-server" % htt4sVersion,
+      "org.http4s" %% "http4s-dsl"          % htt4sVersion,
+      // log
+      "org.log4s" %% "log4s"                % log4sVersion,
+      "org.slf4j"  % "slf4j-log4j12"        % log4j12,
+    )
+  )
 
 // settings
 lazy val commonSettings = Seq(
@@ -202,3 +215,9 @@ val zioVersion = "1.0.0-RC21"
 lazy val circeVersion = "0.13.0"
 
 lazy val akkaVersion = "2.6.5"
+
+lazy val htt4sVersion = "0.21.6"
+
+lazy val log4sVersion = "1.8.2"
+
+lazy val log4j12 = "1.7.30"
