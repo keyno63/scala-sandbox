@@ -1,10 +1,16 @@
+import java.net.http.HttpHeaders
+
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
-import akka.http.scaladsl.model.HttpHeader
+import akka.http.scaladsl.model.{ContentType, HttpHeader}
 import akka.http.scaladsl.server.Directives._
 
 import scala.concurrent.Future
 
+object Apps extends scala.App {
+  val x = ContentType.parse("Content-Type: application/graphql")
+  println(x)
+}
 object App extends scala.App {
 
   implicit val system = ActorSystem()
@@ -16,6 +22,8 @@ object App extends scala.App {
   val route =
     path( "graphql") {
       httpHeaderRoute
+    } ~ path("test") {
+      printRoute
     }
 
   val bindingFuture: Future[Http.ServerBinding] = Http().bindAndHandle(route, host, port)
@@ -33,9 +41,20 @@ object App extends scala.App {
     }
   }
 
-  def hoge : HttpHeader => Option[String] = {
-    case HttpHeader("content-type", value) => Some(value)
-    case _                                       => None
+  val printRoute = {
+    (get & headerValue(hoge)) {
+      case x => complete(x.toString())
+      case _ => complete("ok")
+    }
+  }
+  def hoge : HttpHeader => Option[HttpHeader] = { x =>
+    println(x)
+    Some(x)
+    /*
+    x match {
+      case HttpHeader("content-type", value) => Some(value)
+      case _ => None
+    }*/
   }
 
   def headerValueByNameRoute = {
