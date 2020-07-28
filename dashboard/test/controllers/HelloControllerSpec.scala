@@ -11,6 +11,8 @@ class HelloControllerSpec extends AirSpec {
   def `root_クエリーパラメーターがある場合は「Hello, namae!」というレスポンスを返す`(): Unit = {
     val name = "namae"
     val result = controller.get(Some(name))(FakeRequest())
+    println(result)
+    println(contentAsString(result))
 
     status(result) shouldBe 200
     contentAsString(result) shouldBe s"Hello, $name!"

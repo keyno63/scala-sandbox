@@ -123,7 +123,7 @@ lazy val amm = (project in file("amm"))
     )
   )
 
-lazy val zio = (project in file("zio"))
+lazy val zio = (project in file("functional/zio"))
   .settings(commonSettings)
   .settings(
     name := "zio",
@@ -132,7 +132,7 @@ lazy val zio = (project in file("zio"))
     )
   )
 
-lazy val `akka-sample` = (project in file("akka-sample"))
+lazy val `akka-sample` = (project in file("http/akka-sample"))
   .settings(commonSettings)
   .settings(
     name := "akka-sample",
@@ -142,7 +142,7 @@ lazy val `akka-sample` = (project in file("akka-sample"))
     )
   )
 
-lazy val `htt4s-sample` = (project in file("htt4s-sample"))
+lazy val `htt4s-sample` = (project in file("http/htt4s-sample"))
   .settings(commonSettings)
   .settings(
     name := "htt4s-sample",
