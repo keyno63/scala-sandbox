@@ -43,9 +43,9 @@ lazy val dashboard = (project in file("dashboard"))
       guice,
       jdbc,
       evolutions,
-      "org.scalikejdbc"        %% "scalikejdbc"                  % scalikejdbcVersion,
-      "org.scalikejdbc"        %% "scalikejdbc-config"           % scalikejdbcVersion,
-      "org.scalikejdbc"        %% "scalikejdbc-play-initializer" % scalikejdbcInitializerVersion,
+      "org.scalikejdbc"        %% "scalikejdbc"                  % Version.scalikejdbcVersion,
+      "org.scalikejdbc"        %% "scalikejdbc-config"           % Version.scalikejdbcVersion,
+      "org.scalikejdbc"        %% "scalikejdbc-play-initializer" % Version.scalikejdbcInitializerVersion,
       "org.scalatestplus.play" %% "scalatestplus-play"           % "5.1.0" % Test,
       "com.h2database"         %  "h2"                           % "1.4.200",
       "com.dripower"           %% "play-circe"                   % "2812.0",
@@ -58,7 +58,7 @@ lazy val dashboard = (project in file("dashboard"))
       "io.circe" %% "circe-core",
       "io.circe" %% "circe-generic",
       "io.circe" %% "circe-parser"
-    ).map(_ % circeVersion)
+    ).map(_ % Version.circeVersion)
   )
 
 import Dependency._
@@ -115,7 +115,7 @@ lazy val amm = (project in file("amm"))
     "io.circe" %% "circe-core",
     "io.circe" %% "circe-generic",
     "io.circe" %% "circe-parser"
-    ).map(_ % circeVersion),
+    ).map(_ % Version.circeVersion),
     libraryDependencies ++= Seq(
       "org.skinny-framework" %% "skinny-http-client" % "3.0.1",
       "log4j" % "log4j" % "1.2.17",
@@ -128,7 +128,7 @@ lazy val zio = (project in file("functional/zio"))
   .settings(
     name := "zio",
     libraryDependencies ++= Seq(
-      "dev.zio" %% "zio" % zioVersion
+      "dev.zio" %% "zio" % Version.zioVersion
     )
   )
 
@@ -137,8 +137,8 @@ lazy val `akka-sample` = (project in file("http/akka-sample"))
   .settings(
     name := "akka-sample",
     libraryDependencies ++= Seq(
-      "com.typesafe.akka" %% "akka-http"           % "10.1.12",
-      "com.typesafe.akka" %% "akka-stream"         % akkaVersion
+      "com.typesafe.akka" %% "akka-http"           % Version.akkaHttpVersion,
+      "com.typesafe.akka" %% "akka-stream"         % Version.akkaVersion
     )
   )
 
@@ -147,37 +147,37 @@ lazy val `htt4s-sample` = (project in file("http/htt4s-sample"))
   .settings(
     name := "htt4s-sample",
     libraryDependencies ++= Seq(
-      "org.http4s" %% "http4s-server"       % htt4sVersion,
-      "org.http4s" %% "http4s-blaze-server" % htt4sVersion,
-      "org.http4s" %% "http4s-dsl"          % htt4sVersion,
+      "org.http4s" %% "http4s-server"       % Version.htt4sVersion,
+      "org.http4s" %% "http4s-blaze-server" % Version.htt4sVersion,
+      "org.http4s" %% "http4s-dsl"          % Version.htt4sVersion,
       // log
-      "org.log4s" %% "log4s"                % log4sVersion,
-      "org.slf4j"  % "slf4j-log4j12"        % log4j12,
+      "org.log4s" %% "log4s"                % Version.log4sVersion,
+      "org.slf4j"  % "slf4j-log4j12"        % Version.log4j12,
     )
   )
 
 // settings
 lazy val commonSettings = Seq(
-  scalaVersion := scalaBaseVersion,
+  scalaVersion := Version.scalaBaseVersion,
   version := "0.1-SNAPSHOT",
   libraryDependencies ++= Seq(
     // test
     "org.scalatest" %% "scalatest" % "3.0.5" % "test",
 
     // akka
-    "com.typesafe.akka" %% "akka-actor" % akkaVersion,
-    "com.typesafe.akka" %% "akka-testkit" % akkaVersion % Test,
+    "com.typesafe.akka" %% "akka-actor" % Version.akkaVersion,
+    "com.typesafe.akka" %% "akka-testkit" % Version.akkaVersion % Test,
   ),
 )
 
 lazy val airSpecSettings = Seq(
   scalacOptions ++= Seq("-unchecked", "-feature", "-language:implicitConversions", "-language:higherKinds", "-language:postfixOps"),
-  libraryDependencies += "org.wvlet.airframe" %% "airspec" % airSpecVersion % "test",
+  libraryDependencies += "org.wvlet.airframe" %% "airspec" % Version.airSpecVersion % "test",
   testFrameworks += new TestFramework("wvlet.airspec.Framework"),
 )
 
 lazy val scalaJsSettings = Seq(
-  scalaVersion := scalaBaseVersion,
+  scalaVersion := Version.scalaBaseVersion,
   version := "0.1-SNAPSHOT",
   scalacOptions += "-P:scalajs:sjsDefinedByDefault",
   //scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) },
@@ -192,7 +192,7 @@ lazy val scalaJsSettings = Seq(
 
 lazy val scalaJsSpecSettings = Seq(
   scalacOptions ++= Seq("-unchecked", "-feature", "-language:implicitConversions", "-language:higherKinds", "-language:postfixOps"),
-  libraryDependencies += "org.wvlet.airframe" %%% "airspec" % airSpecVersion % "test",
+  libraryDependencies += "org.wvlet.airframe" %%% "airspec" % Version.airSpecVersion % "test",
   testFrameworks += new TestFramework("wvlet.airspec.Framework"),
 )
 
@@ -200,24 +200,4 @@ name := "training"
 
 version := "0.1"
 
-scalaVersion := scalaBaseVersion
-
-val airSpecVersion = "19.8.8"
-
-val scalikejdbcVersion = "3.4.0"
-
-val scalaBaseVersion = "2.12.12"
-
-val scalikejdbcInitializerVersion = "2.8.0-scalikejdbc-3.4"
-
-val zioVersion = "1.0.0-RC21"
-
-lazy val circeVersion = "0.13.0"
-
-lazy val akkaVersion = "2.6.5"
-
-lazy val htt4sVersion = "0.21.6"
-
-lazy val log4sVersion = "1.8.2"
-
-lazy val log4j12 = "1.7.30"
+scalaVersion := Version.scalaBaseVersion
