@@ -156,6 +156,16 @@ lazy val `htt4s-sample` = (project in file("http/htt4s-sample"))
     )
   )
 
+lazy val `finch-sample` = (project in file("http/finch-sample"))
+  .settings(commonSettings)
+  .settings(
+    name := "finch-sample",
+    libraryDependencies ++= Seq(
+      "com.github.finagle" %% "finchx-core",
+      "com.github.finagle" %% "finchx-circe",
+    ).map(_ % Version.finchVersion)
+  )
+
 // settings
 lazy val commonSettings = Seq(
   scalaVersion := Version.scalaBaseVersion,
