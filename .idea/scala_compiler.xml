@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ScalaCompilerConfiguration">
-    <profile name="sbt 1" modules="akka-sample,amm,finch-sample,gcpclient,htt4s-sample,socket,training,training_1898,zio" />
+    <profile name="sbt 1" modules="akka-sample,amm,circe-sample,finch-sample,gcpclient,htt4s-sample,socket,training,training_1898,zio" />
     <profile name="sbt 2" modules="cop,gof,sip">
       <option name="postfixOps" value="true" />
       <option name="implicitConversions" value="true" />

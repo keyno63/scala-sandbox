@@ -166,6 +166,18 @@ lazy val `finch-sample` = (project in file("http/finch-sample"))
     ).map(_ % Version.finchVersion)
   )
 
+// json
+lazy val `circe-sample` = (project in file("json/circe-sample"))
+  .settings(commonSettings)
+  .settings(
+    name := "circe-sample",
+    libraryDependencies ++= Seq(
+      "io.circe" %% "circe-core",
+      "io.circe" %% "circe-generic",
+      "io.circe" %% "circe-parser"
+    ).map(_ % Version.circeVersion)
+  )
+
 // settings
 lazy val commonSettings = Seq(
   scalaVersion := Version.scalaBaseVersion,
