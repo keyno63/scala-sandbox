@@ -1,5 +1,3 @@
-import java.net.http.HttpHeaders
-
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.model.{ContentType, HttpHeader}
