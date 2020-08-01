@@ -34,7 +34,7 @@ object App extends scala.App {
       case _                                   => None
     }) {
       case "application/graphql" => complete("this is target!!!")
-      case x => complete(s"this is have content-type, ${x}")
+      //case x => complete(s"this is have content-type, ${x}")
       case _ => complete("")
     } ~ get {
       complete("not content-type")
@@ -42,10 +42,8 @@ object App extends scala.App {
   }
 
   val printRoute = {
-    (get & headerValue(hoge)) {
-      case x => complete(x.toString())
-      case _ => complete("ok")
-    }
+    (get & headerValue(hoge)) (//case hoge => complete(hoge.toString())
+      _ => complete("ok"))
   }
   def hoge : HttpHeader => Option[HttpHeader] = { x =>
     println(x)
