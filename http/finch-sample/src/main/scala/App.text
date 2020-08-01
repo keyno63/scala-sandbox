@@ -1,0 +1,36 @@
+import io.finch._
+import io.finch.Endpoint._
+import io.circe.Json
+import cats.effect.IO
+import com.twitter.finagle.Http
+import com.twitter.util.Await
+
+object App extends scala.App with Endpoint.Module[IO] {
+  val endpoint = "api" :: "sample" :: Service.makeHttpService()
+
+  val services = Bootstrap
+    .serve[Text.Plain](endpoint)
+    .toService
+
+  val server = Http.server.serve(":8088", services)
+  Await.ready(server)
+
+  /*
+  val api: Endpoint[IO, String] = get("hello") { Ok("Hello, World!") }
+  Await.ready(Http.server.serve(":8080", api.toServiceAs[Text.Plain]))
+  //Http.server.serve(":8080", api.toServiceAs[Text.Plain])
+   */
+
+}
+
+object Service {
+  import io.finch._
+  def makeHttpService(): Endpoint[IO, String] =
+    get(stringBody) { body: String
+      Ok("body")
+    }
+
+  val query = paramOption("query").mapAsync{
+    case query => Ok(query.getOrElse("nothing"))
+  }
+}

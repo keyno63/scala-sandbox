@@ -1,7 +1,7 @@
 import sbt._
 import sbt.Keys.{skip, _}
 
-lazy val cop = (project in file("cop"))
+lazy val cop = (project in file("draft/cop"))
   .settings(commonSettings)
   .settings(airSpecSettings)
   .settings(
@@ -9,7 +9,7 @@ lazy val cop = (project in file("cop"))
     exportJars := true
   )
 
-lazy val gof = (project in file("gof"))
+lazy val gof = (project in file("draft/gof"))
   .settings(commonSettings)
   .settings(airSpecSettings)
   .settings(
@@ -17,14 +17,14 @@ lazy val gof = (project in file("gof"))
     exportJars := true
   )
 
-lazy val socket = (project in file("socket"))
+lazy val socket = (project in file("prototype/socket"))
   .settings(commonSettings)
   .settings(
     name := "socket"
   )
   /*.aggregate(common).dependsOn(common)*/
 
-lazy val sip = (project in file("sip"))
+lazy val sip = (project in file("prototype/sip"))
   .settings(commonSettings)
   .settings(airSpecSettings)
   .settings(
@@ -62,7 +62,7 @@ lazy val dashboard = (project in file("dashboard"))
   )
 
 import Dependency._
-lazy val grammar = (project in file("grammar"))
+lazy val grammar = (project in file("draft/grammar"))
   .settings(commonSettings)
   .settings(airSpecSettings)
   .settings(
@@ -89,7 +89,7 @@ lazy val grammar = (project in file("grammar"))
     )
   )
 
-lazy val gcpclient = (project in file("gcpclient"))
+lazy val gcpclient = (project in file("tools/gcpclient"))
   .settings(commonSettings)
   .settings(
     name := "gcpclient",
@@ -107,7 +107,7 @@ lazy val gcpclient = (project in file("gcpclient"))
 //    artifactPath in (Compile, fastOptJS) := baseDirectory.value / "dist" / "scalajs.js",
 //  )
 
-lazy val amm = (project in file("amm"))
+lazy val amm = (project in file("tools/amm"))
   .settings(commonSettings)
   .settings(
     name := "amm",
