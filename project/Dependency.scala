@@ -40,5 +40,6 @@ object Version {
   lazy val log4j12 = "1.7.30"
   // test
   lazy val airSpecVersion = "19.8.8"
-  lazy val scalatestVersion = "3.2.0"
+  //lazy val scalatestVersion = "3.2.0" // まだ早かった
+  lazy val scalatestVersion = "3.0.8"
 }

@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ScalaCompilerConfiguration">
-    <profile name="sbt 1" modules="akka-sample,amm,circe-sample,finch-sample,gcpclient,htt4s-sample,sandbox,socket,training,training_1898,zio" />
-    <profile name="sbt 2" modules="cop,gof,sip">
-      <option name="postfixOps" value="true" />
-      <option name="implicitConversions" value="true" />
-      <option name="higherKinds" value="true" />
-      <option name="uncheckedWarnings" value="true" />
-      <option name="featureWarnings" value="true" />
-    </profile>
-    <profile name="sbt 3" modules="grammar">
+    <profile name="sbt 1" modules="akka-sample,amm,circe-sample,finch-sample,gcpclient,htt4s-sample,sandbox,sandbox_23,socket,zio" />
+    <profile name="sbt 2" modules="grammar">
       <option name="postfixOps" value="true" />
       <option name="implicitConversions" value="true" />
       <option name="higherKinds" value="true" />
@@ -27,7 +20,7 @@
         <plugin path="$USER_HOME$/.cache/coursier/v1/https/repo1.maven.org/maven2/org/spire-math/kind-projector_2.12/0.9.4/kind-projector_2.12-0.9.4.jar" />
       </plugins>
     </profile>
-    <profile name="sbt 4" modules="dashboard">
+    <profile name="sbt 3" modules="dashboard">
       <option name="postfixOps" value="true" />
       <option name="implicitConversions" value="true" />
       <option name="higherKinds" value="true" />
@@ -39,18 +32,12 @@
         <parameter value="utf8" />
       </parameters>
     </profile>
-    <profile name="sbt 5" modules="scalajs">
+    <profile name="sbt 4" modules="cop,gof,sip">
       <option name="postfixOps" value="true" />
       <option name="implicitConversions" value="true" />
       <option name="higherKinds" value="true" />
       <option name="uncheckedWarnings" value="true" />
       <option name="featureWarnings" value="true" />
-      <parameters>
-        <parameter value="-P:scalajs:sjsDefinedByDefault" />
-      </parameters>
-      <plugins>
-        <plugin path="$USER_HOME$/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-js/scalajs-compiler_2.12.12/0.6.33/scalajs-compiler_2.12.12-0.6.33.jar" />
-      </plugins>
     </profile>
   </component>
 </project>
