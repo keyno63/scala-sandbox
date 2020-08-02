@@ -219,7 +219,7 @@ lazy val scalaJsSpecSettings = Seq(
   testFrameworks += new TestFramework("wvlet.airspec.Framework"),
 )
 
-name := "sandbox"
+name := "scala-sandbox"
 
 version := "0.1"
 
