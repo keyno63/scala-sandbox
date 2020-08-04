@@ -2,8 +2,8 @@ package jp.co.who.socket.sample
 
 import java.net.InetSocketAddress
 
-import akka.actor.{Actor, ActorLogging, ActorRef, ActorSystem, Props}
-import akka.io.{IO, Udp}
+import akka.actor.{ Actor, ActorLogging, ActorRef, ActorSystem, Props }
+import akka.io.{ IO, Udp }
 
 class Listener extends Actor with ActorLogging {
   import context.system
@@ -24,7 +24,7 @@ class Listener extends Actor with ActorLogging {
         socket ! Udp.Send(data, remote) // example server echoes back
       //nextActor ! processed
       log.info(s"ready. Received $processed, $data, $remote")
-    case Udp.Unbind  => {
+    case Udp.Unbind => {
       log.info("ready. Unbind")
       socket ! Udp.Unbind
     }
@@ -37,5 +37,5 @@ class Listener extends Actor with ActorLogging {
 
 object Listener extends App {
   val system = ActorSystem("UDPSocket")
-  val ac = system.actorOf(Props[Listener])
+  val ac     = system.actorOf(Props[Listener])
 }

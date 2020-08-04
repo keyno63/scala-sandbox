@@ -2,8 +2,8 @@ package jp.co.who.socket.sender
 
 import java.net.InetSocketAddress
 
-import akka.actor.{Actor, ActorRef}
-import akka.io.{IO, Udp}
+import akka.actor.{ Actor, ActorRef }
+import akka.io.{ IO, Udp }
 import akka.util.ByteString
 
 class SimpleSender(remote: InetSocketAddress) extends Actor {

@@ -15,10 +15,10 @@ object Main extends App {
   println(s.whoMethod)
 
   // test Sum object.
-  val x = List(1,2,3,4).summ
+  val x = List(1, 2, 3, 4).summ
   println(x)
 
   // sum
-  println(sum(List(1,2,3,4))) // all sum
-  println(sum(List(1,2,3,4))(multiMonoid)) // all ultiplication
+  println(sum(List(1, 2, 3, 4)))              // all sum
+  println(sum(List(1, 2, 3, 4))(multiMonoid)) // all ultiplication
 }

@@ -18,8 +18,8 @@ object FoldLeft {
 }
 
 object FoldSum {
-  def sum[M[_] : FoldLeft, A: Monoid](xs: M[A]): A = {
-    val m = implicitly[Monoid[A]]
+  def sum[M[_]: FoldLeft, A: Monoid](xs: M[A]): A = {
+    val m  = implicitly[Monoid[A]]
     val fl = implicitly[FoldLeft[M]]
     fl.foldLeft(xs, m.mzero, m.mappend)
   }

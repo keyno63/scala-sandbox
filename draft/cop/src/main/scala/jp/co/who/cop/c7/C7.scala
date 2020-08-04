@@ -1,5 +1,3 @@
 package jp.co.who.cop.c7
 
-class C7 {
-
-}
+class C7 {}

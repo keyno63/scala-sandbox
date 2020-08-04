@@ -21,7 +21,7 @@ object Sum {
   }
 
   // implicit conversion を行う実体となるクラス
-  implicit class ToSum[T](v: T)(implicit i:Sum[T]) extends SumOps[T] {
+  implicit class ToSum[T](v: T)(implicit i: Sum[T]) extends SumOps[T] {
     override implicit def ins: Sum[T] = i
 
     override def self: T = v
@@ -39,18 +39,18 @@ object Monoid {
   // Int の総和
   implicit val IntMonoid = new Monoid[Int] {
     def mappend(a: Int, b: Int): Int = a + b
-    def mzero: Int = 0
+    def mzero: Int                   = 0
   }
 
   // Int の総積
   val multiMonoid: Monoid[Int] = new Monoid[Int] {
     def mappend(a: Int, b: Int): Int = a * b
-    def mzero: Int = 1
+    def mzero: Int                   = 1
   }
 
   implicit val StringMonoid = new Monoid[String] {
     def mappend(a: String, b: String): String = a + b
-    def mzero: String = ""
+    def mzero: String                         = ""
   }
 
   def sum[A: Monoid](xs: List[A]): A = {

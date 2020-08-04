@@ -1,6 +1,6 @@
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
-import akka.http.scaladsl.model.{ContentType, HttpHeader}
+import akka.http.scaladsl.model.{ ContentType, HttpHeader }
 import akka.http.scaladsl.server.Directives._
 
 import scala.concurrent.Future
@@ -12,13 +12,13 @@ object Apps extends scala.App {
 object App extends scala.App {
 
   implicit val system = ActorSystem()
-  implicit val ec = system.dispatcher
+  implicit val ec     = system.dispatcher
 
   val host = "localhost"
   val port = 8080
 
   val route =
-    path( "graphql") {
+    path("graphql") {
       httpHeaderRoute
     } ~ path("test") {
       printRoute
@@ -29,7 +29,7 @@ object App extends scala.App {
   val httpHeaderRoute = {
     (get & headerValue {
       case HttpHeader("content-type", value) => Some(value)
-      case _                                   => None
+      case _                                 => None
     }) {
       case "application/graphql" => complete("this is target!!!")
       //case x => complete(s"this is have content-type, ${x}")
@@ -40,26 +40,25 @@ object App extends scala.App {
   }
 
   val printRoute = {
-    (get & headerValue(hoge)) (//case hoge => complete(hoge.toString())
-      _ => complete("ok"))
+    (get & headerValue(hoge))(
+      //case hoge => complete(hoge.toString())
+      _ => complete("ok")
+    )
   }
-  def hoge : HttpHeader => Option[HttpHeader] = { x =>
+  def hoge: HttpHeader => Option[HttpHeader] = { x =>
     println(x)
     Some(x)
-    /*
+  /*
     x match {
       case HttpHeader("content-type", value) => Some(value)
       case _ => None
     }*/
   }
 
-  def headerValueByNameRoute = {
+  def headerValueByNameRoute =
     get {
-      headerValueByName("content-type") {
-        req => complete(s"ok. ${req.toString}")
-      }
+      headerValueByName("content-type")(req => complete(s"ok. ${req.toString}"))
     } ~ get {
       complete("ok")
     }
-  }
 }

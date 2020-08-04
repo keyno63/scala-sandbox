@@ -6,7 +6,7 @@ object Main extends App {
   def add3(b: Int): Int = b + 3
 
   val value = args.head
-  val ret = Cps.f(Something(value))
+  val ret   = Cps.f(Something(value))
   println(ret)
 
   val c = 10

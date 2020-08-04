@@ -2,12 +2,11 @@ package jp.co.who.socket.sample
 
 import java.net.InetSocketAddress
 
-import akka.actor.{Actor, ActorLogging, ActorRef, ActorSystem, Props}
-import akka.io.{IO, Udp}
+import akka.actor.{ Actor, ActorLogging, ActorRef, ActorSystem, Props }
+import akka.io.{ IO, Udp }
 import akka.util.ByteString
 
-class SimpleSender(remote: InetSocketAddress)
-  extends Actor with ActorLogging {
+class SimpleSender(remote: InetSocketAddress) extends Actor with ActorLogging {
   import context.system
   IO(Udp) ! Udp.SimpleSender
 
@@ -32,8 +31,8 @@ class SimpleSender(remote: InetSocketAddress)
 object SimpleSender extends App {
 
   val systemSender = ActorSystem("SimpleSender")
-  val sock = new InetSocketAddress("localhost", 18081)
-  val ac = systemSender.actorOf(Props(classOf[SimpleSender], sock), "SimpleSender")
+  val sock         = new InetSocketAddress("localhost", 18081)
+  val ac           = systemSender.actorOf(Props(classOf[SimpleSender], sock), "SimpleSender")
 
   (0 to 100).foreach { i =>
     ac ! "hi SimpleSender"

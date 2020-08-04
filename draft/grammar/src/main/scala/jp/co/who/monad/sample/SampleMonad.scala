@@ -11,9 +11,8 @@ class SampleMonad[A](id: A) {
     SampleMonad[B](a)
   }
 
-  def flatMap[B](f: A => SampleMonad[B]): SampleMonad[B] = {
+  def flatMap[B](f: A => SampleMonad[B]): SampleMonad[B] =
     f(this.id)
-  }
 
   override def toString: String = id.toString
 

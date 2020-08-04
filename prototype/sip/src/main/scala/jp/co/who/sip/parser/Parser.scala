@@ -4,7 +4,7 @@ class Parser {
 
   def sample(data: Any): Any = data match {
     case s: String => s
-    case _ => Some(data)
+    case _         => Some(data)
   }
 
 }
@@ -40,9 +40,8 @@ object Parser {
       |a=rtpmap:0 PCMU/8000
     """.stripMargin
 
-  def main(args: Array[String]): Unit = {
+  def main(args: Array[String]): Unit =
     println(INVITE split '\n')
-  }
 
   def sampleParser(): Parser = {
     val c = new Parser

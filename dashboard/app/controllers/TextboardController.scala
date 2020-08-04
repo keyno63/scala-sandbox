@@ -3,7 +3,7 @@ package controllers
 import java.time.OffsetDateTime
 
 import javax.inject.Inject
-import play.api.mvc.{AbstractController, Action, ControllerComponents}
+import play.api.mvc.{ AbstractController, Action, ControllerComponents }
 import play.api.data.Form
 import play.api.data.Forms._
 import play.api.i18n.I18nSupport
@@ -13,17 +13,17 @@ import repository.PostRepository
 
 case class PostRequest(body: String)
 
-class TextboardController @Inject()(cc: ControllerComponents, override val messagesApi: MessagesApi)
-  extends AbstractController(cc) with I18nSupport {
+class TextboardController @Inject() (cc: ControllerComponents, override val messagesApi: MessagesApi)
+    extends AbstractController(cc)
+    with I18nSupport {
   private[this] val form = Form(
     mapping(
       "post" -> text(minLength = 1, maxLength = 10).withPrefix("hogeika")
-    )(PostRequest.apply)(PostRequest.unapply))
+    )(PostRequest.apply)(PostRequest.unapply)
+  )
 
   // GET action.
-  def get = Action { implicit request =>
-    Ok(views.html.index(PostRepository.findAll, form))
-  }
+  def get = Action(implicit request => Ok(views.html.index(PostRepository.findAll, form)))
 
   // POST action.
   def post = Action { implicit request =>

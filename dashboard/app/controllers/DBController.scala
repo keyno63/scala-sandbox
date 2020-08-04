@@ -5,18 +5,20 @@ import java.time.OffsetDateTime
 import form.Post
 import javax.inject.Inject
 import play.api.data.Form
-import play.api.data.Forms.{mapping, text}
-import play.api.i18n.{I18nSupport, Messages, MessagesApi}
+import play.api.data.Forms.{ mapping, text }
+import play.api.i18n.{ I18nSupport, Messages, MessagesApi }
 import play.api.libs.json.Json
-import play.api.mvc.{AbstractController, Action, AnyContent, ControllerComponents}
-import repository.{Meta, PostPgsqlRepository, Response}
+import play.api.mvc.{ AbstractController, Action, AnyContent, ControllerComponents }
+import repository.{ Meta, PostPgsqlRepository, Response }
 
-class DBController @Inject()(cc: ControllerComponents, override val messagesApi: MessagesApi)
-  extends AbstractController(cc)  with I18nSupport {
+class DBController @Inject() (cc: ControllerComponents, override val messagesApi: MessagesApi)
+    extends AbstractController(cc)
+    with I18nSupport {
   private[this] val form = Form(
     mapping(
       "post" -> text(minLength = 1, maxLength = 10)
-    )(PostRequests.apply)(PostRequests.unapply))
+    )(PostRequests.apply)(PostRequests.unapply)
+  )
 
   def get: Action[AnyContent] = Action { implicit request =>
     Ok(

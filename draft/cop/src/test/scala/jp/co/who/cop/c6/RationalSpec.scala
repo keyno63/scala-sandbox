@@ -14,18 +14,19 @@ class RationalSpec extends AirSpec {
     /*
     val c = new Rational(2, 0)
     c.toString shouldBe "2"
-    */
+   */
   }
 
   def `table test`(): Unit = {
     val z = Seq(
       (3, 4),
-      (2, 4),
+      (2, 4)
       //(2, 0),
     )
 
     val expect = Seq(
-      "3/4", "1/2", //"2"
+      "3/4",
+      "1/2" //"2"
     )
 
     var i = 0
@@ -37,4 +38,3 @@ class RationalSpec extends AirSpec {
   }
 
 }
-

@@ -1,12 +1,11 @@
 package controllers
 
-import javax.inject.{Inject, Singleton}
-import play.api.i18n.{I18nSupport, Messages}
+import javax.inject.{ Inject, Singleton }
+import play.api.i18n.{ I18nSupport, Messages }
 import play.api.mvc._
 
 @Singleton
-class HelloController @Inject()(cc: ControllerComponents)
-  extends AbstractController(cc) with I18nSupport {
+class HelloController @Inject() (cc: ControllerComponents) extends AbstractController(cc) with I18nSupport {
 
   def get(name: Option[String]): Action[AnyContent] =
     Action { implicit request: Request[AnyContent] =>
@@ -22,9 +21,9 @@ class HelloController @Inject()(cc: ControllerComponents)
       Ok {
         val x = (a, b) match {
           case (Some(y), Some(z)) => y + z
-          case (Some(y), _) => y
-          case (_, Some(z)) => z
-          case (_, _) => 0
+          case (Some(y), _)       => y
+          case (_, Some(z))       => z
+          case (_, _)             => 0
         }
         s"$x"
       }

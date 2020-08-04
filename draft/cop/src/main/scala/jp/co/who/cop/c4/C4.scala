@@ -2,12 +2,12 @@ package jp.co.who.cop.c4
 
 class C4 {
   class ChecksumAccumulator {
-    var sum = 0
-    def add(b: Byte): Unit = { sum += b }
-    def uncheck(): Int = ~(sum & 0xFF) + 1
+    var sum                = 0
+    def add(b: Byte): Unit = sum += b
+    def uncheck(): Int     = ~(sum & 0xFF) + 1
   }
 
-  def cap_4_1_0(): Unit  = {
+  def cap_4_1_0(): Unit = {
     val acc = new ChecksumAccumulator
     val csa = new ChecksumAccumulator
     println(acc.sum, csa.sum)
@@ -30,8 +30,8 @@ class C4 {
         cs
       }
   }
-  def cap_4_3_0(): Unit  = {
-    val s = "Every value is an object"
+  def cap_4_3_0(): Unit = {
+    val s   = "Every value is an object"
     val ret = ChecksumAccumulator.calculate(s)
     println(ret)
   }

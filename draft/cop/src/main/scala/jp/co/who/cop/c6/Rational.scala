@@ -1,72 +1,72 @@
 package jp.co.who.cop.c6
 
-class Rational(n: Int, d: Int)  {
+class Rational(n: Int, d: Int) {
   require(d != 0)
-  private val g = gcd(n.abs, d.abs)
-  private val numer =  n/g
-  private val denom = d/g
+  private val g     = gcd(n.abs, d.abs)
+  private val numer = n / g
+  private val denom = d / g
   def this(n: Int) = this(n, 1)
 
   // numeric
-  def + (i: Int): Rational =
+  def +(i: Int): Rational =
     new Rational(
       this.numer + i * this.denom,
       this.denom
     )
 
-  def - (i: Int): Rational =
+  def -(i: Int): Rational =
     new Rational(
       this.numer - i * this.denom,
       this.denom
     )
 
-  def * (i: Int): Rational =
+  def *(i: Int): Rational =
     new Rational(
       this.numer * i,
       this.denom
     )
 
-  def / (i: Int): Rational =
+  def /(i: Int): Rational =
     new Rational(
       this.numer,
       this.denom * i
     )
 
   /**
-    * (this) + (that) =
-    * c/d + a/b = (bc + ad)/bd
-    */
-  def + (that: Rational): Rational =
+   * (this) + (that) =
+   * c/d + a/b = (bc + ad)/bd
+   */
+  def +(that: Rational): Rational =
     new Rational(
       this.numer * that.denom + that.numer * this.denom,
       this.denom * that.denom
     )
 
   /**
-    * (this) - (that) =
-    * c/d - a/b = (bc - ad)/bd
-    */
-  def - (that: Rational): Rational =
+   * (this) - (that) =
+   * c/d - a/b = (bc - ad)/bd
+   */
+  def -(that: Rational): Rational =
     new Rational(
       this.numer * that.denom - that.numer * this.denom,
       this.denom * that.denom
     )
 
   /**
-    * (this) * (that) =
-    * c/d * a/b = (a*c)/(b*d)
-    */
-  def * (that: Rational): Rational =
+   * (this) * (that) =
+   * c/d * a/b = (a*c)/(b*d)
+   */
+  def *(that: Rational): Rational =
     new Rational(
       this.numer * that.numer,
       this.denom * that.denom
     )
 
   /**
-    * (this) * (that) =
-    * c/d / a/b = (b*c)/(a*d)
-    */
-  def / (that: Rational): Rational =
+   * (this) * (that) =
+   * c/d / a/b = (b*c)/(a*d)
+   */
+  def /(that: Rational): Rational =
     new Rational(
       this.numer * that.denom,
       this.denom * that.numer

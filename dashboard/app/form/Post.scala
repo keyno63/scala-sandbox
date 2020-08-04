@@ -2,7 +2,7 @@ package form
 
 import java.time.OffsetDateTime
 
-import play.api.libs.json.{Json, Writes}
+import play.api.libs.json.{ Json, Writes }
 
 case class Post(id: Long, body: String, date: OffsetDateTime)
 

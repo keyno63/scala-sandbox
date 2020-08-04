@@ -9,9 +9,9 @@ import scala.io.Source
 object FutureSample extends App {
 
   val url = "http://sample.com/"
-  val f = Future(HttpTextClient.get(url))
+  val f   = Future(HttpTextClient.get(url))
 
-  f.onComplete{
+  f.onComplete {
     case Success(body) =>
       println("success")
       println(body.mkString)
@@ -24,7 +24,6 @@ object FutureSample extends App {
 
 import scala.io._
 object HttpTextClient {
-  def get(url: String): BufferedSource = {
+  def get(url: String): BufferedSource =
     Source.fromURL(url)
-  }
 }

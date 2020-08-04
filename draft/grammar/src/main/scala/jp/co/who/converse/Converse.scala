@@ -2,7 +2,7 @@ package jp.co.who.converse
 
 object Converse extends App {
 
-  val myHuman: MyType[Human] = new MyType(new Human)
+  val myHuman: MyType[Human]   = new MyType(new Human)
   val myAnimal: MyType[Animal] = myHuman
 }
 

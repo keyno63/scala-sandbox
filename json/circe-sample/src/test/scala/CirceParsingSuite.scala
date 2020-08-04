@@ -8,7 +8,7 @@ class CirceParsingSuite extends AnyFlatSpec {
   "parce json string" should "convert User" in {
     assert(
       circeParcing.parseString("""{"id":1, "name": "John"}""") ==
-      Right(User(1, "John"))
+        Right(User(1, "John"))
     )
     assert(
       circeParcing.parseString("""{"id":0, "name": "Bob"}""") ==

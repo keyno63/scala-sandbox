@@ -8,11 +8,9 @@ class CpsSpec extends AirSpec {
     val testData = Seq(
       "100-1000",
       "163-0022",
-      "640-1192",
+      "640-1192"
     )
 
-    testData.foreach { value =>
-      Cps.f(Something(value)) shouldBe value
-    }
+    testData.foreach(value => Cps.f(Something(value)) shouldBe value)
   }
 }

@@ -2,21 +2,22 @@ package jp.co.who.monad.eitherT
 
 import cats.data.EitherT
 import cats.implicits._
-import jp.co.who.monad.eitherT.EitherTSample.DivideError.{Indivisible, ZeroDivision}
+import jp.co.who.monad.eitherT.EitherTSample.DivideError.{ Indivisible, ZeroDivision }
 
-import scala.concurrent.{Await, Future, duration}
+import scala.concurrent.{ duration, Await, Future }
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.util.{Failure, Success}
+import scala.util.{ Failure, Success }
 
 object EitherTSample extends App {
 
   val ret = divideAsyncEitherThreeTimes(10, 2)
-  ret.onComplete{
-    case Success(value) => value match {
-      case Right(data) => println(s"data: $data")
-      case Left(Indivisible(n, d)) => println(s"$n is not divisible by $d")
-      case Left(ZeroDivision) => println("denom must not be 0")
-    }
+  ret.onComplete {
+    case Success(value) =>
+      value match {
+        case Right(data)             => println(s"data: $data")
+        case Left(Indivisible(n, d)) => println(s"$n is not divisible by $d")
+        case Left(ZeroDivision)      => println("denom must not be 0")
+      }
     case Failure(exception) => exception.printStackTrace()
   }
   Await.ready(ret, duration.Duration.Inf)
@@ -30,21 +31,19 @@ object EitherTSample extends App {
     e.value
   }
 
-  def divideAsyncEither(num: Int, denom: Int): Future[Either[DivideError, Int]] = {
+  def divideAsyncEither(num: Int, denom: Int): Future[Either[DivideError, Int]] =
     Future(divideEither(num, denom))
-  }
 
-  def divideEither(num: Int, denom: Int): Either[DivideError, Int] = {
+  def divideEither(num: Int, denom: Int): Either[DivideError, Int] =
     if (denom == 0) Left(ZeroDivision)
     else if (num % denom != 0) Left(Indivisible(num, denom))
     else Right(num / denom)
-  }
 
   // Defined Either Error
   sealed trait DivideError
   object DivideError {
     case class Indivisible(num: Int, denom: Int) extends DivideError
-    object ZeroDivision extends DivideError
+    object ZeroDivision                          extends DivideError
   }
 }
 

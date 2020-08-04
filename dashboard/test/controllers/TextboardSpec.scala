@@ -6,15 +6,11 @@ import play.api.Application
 import play.api.inject.guice.GuiceApplicationBuilder
 import wvlet.airspec.AirSpec
 
-class TextboardSpec
-  extends PlaySpec with GuiceOneServerPerTest
-    with OneBrowserPerSuite with HtmlUnitFactory {
+class TextboardSpec extends PlaySpec with GuiceOneServerPerTest with OneBrowserPerSuite with HtmlUnitFactory {
 
   override def fakeApplication(): Application =
     new GuiceApplicationBuilder()
-      .configure(
-        "db.default.driver" -> "org.h2.Driver",
-        "db.default.url" -> "jdbc:h2:mem:test;MODE=MYSQL")
+      .configure("db.default.driver" -> "org.h2.Driver", "db.default.url" -> "jdbc:h2:mem:test;MODE=MYSQL")
       .build()
 
   /*
@@ -76,5 +72,5 @@ class TextboardSpec
       error.head.text shouldBe "The message is too long."
     }
   }
-  */
+ */
 }
