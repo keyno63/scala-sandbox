@@ -1,5 +1,5 @@
 import sbt._
-import sbt.Keys.{skip, _}
+import sbt.Keys.{ skip, _ }
 
 lazy val cop = (project in file("draft/cop"))
   .settings(commonSettings)
@@ -22,7 +22,7 @@ lazy val socket = (project in file("prototype/socket"))
   .settings(
     name := "socket"
   )
-  /*.aggregate(common).dependsOn(common)*/
+/*.aggregate(common).dependsOn(common)*/
 
 lazy val sip = (project in file("prototype/sip"))
   .settings(commonSettings)
@@ -38,7 +38,7 @@ lazy val dashboard = (project in file("dashboard"))
   .settings(
     name := "dashboard",
     fork in run := true,
-    libraryDependencies ++=Seq(
+    libraryDependencies ++= Seq(
       filters,
       guice,
       jdbc,
@@ -47,7 +47,7 @@ lazy val dashboard = (project in file("dashboard"))
       "org.scalikejdbc"        %% "scalikejdbc-config"           % Version.scalikejdbcVersion,
       "org.scalikejdbc"        %% "scalikejdbc-play-initializer" % Version.scalikejdbcInitializerVersion,
       "org.scalatestplus.play" %% "scalatestplus-play"           % "5.1.0" % Test,
-      "com.h2database"         %  "h2"                           % "1.4.200",
+      "com.h2database"         % "h2"                            % "1.4.200",
       "com.dripower"           %% "play-circe"                   % "2812.0",
       // https://mvnrepository.com/artifact/org.postgresql/postgresql
       "org.postgresql" % "postgresql" % "42.2.14",
@@ -73,11 +73,14 @@ lazy val grammar = (project in file("draft/grammar"))
       catsMtl,
       simulacrum,
       //specs2Core % Test, specs2Scalacheck % Test, scalacheck % Test,
-      macroParadise, kindProjector, resetAllAttrs
+      macroParadise,
+      kindProjector,
+      resetAllAttrs
     ),
     scalacOptions ++= Seq(
       "-deprecation",
-      "-encoding", "UTF-8",
+      "-encoding",
+      "UTF-8",
       "-Ypartial-unification",
       "-feature",
       "-language:_"
@@ -85,15 +88,15 @@ lazy val grammar = (project in file("draft/grammar"))
   )
   .settings(
     name := "grammar",
-    libraryDependencies ++=Seq(
-    )
+    libraryDependencies ++= Seq(
+      )
   )
 
 lazy val gcpclient = (project in file("tools/gcpclient"))
   .settings(commonSettings)
   .settings(
     name := "gcpclient",
-    libraryDependencies ++=Seq(
+    libraryDependencies ++= Seq(
       "com.google.cloud" % "google-cloud-storage" % "1.87.0"
     )
   )
@@ -112,14 +115,14 @@ lazy val amm = (project in file("tools/amm"))
   .settings(
     name := "amm",
     libraryDependencies ++= Seq(
-    "io.circe" %% "circe-core",
-    "io.circe" %% "circe-generic",
-    "io.circe" %% "circe-parser"
+      "io.circe" %% "circe-core",
+      "io.circe" %% "circe-generic",
+      "io.circe" %% "circe-parser"
     ).map(_ % Version.circeVersion),
     libraryDependencies ++= Seq(
       "org.skinny-framework" %% "skinny-http-client" % "3.0.1",
-      "log4j" % "log4j" % "1.2.17",
-      "org.slf4j" % "slf4j-log4j12" % "1.7.26" % Test,
+      "log4j"                % "log4j"               % "1.2.17",
+      "org.slf4j"            % "slf4j-log4j12"       % "1.7.26" % Test
     )
   )
 
@@ -137,8 +140,8 @@ lazy val `akka-sample` = (project in file("http/akka-sample"))
   .settings(
     name := "akka-sample",
     libraryDependencies ++= Seq(
-      "com.typesafe.akka" %% "akka-http"           % Version.akkaHttpVersion,
-      "com.typesafe.akka" %% "akka-stream"         % Version.akkaVersion
+      "com.typesafe.akka" %% "akka-http"   % Version.akkaHttpVersion,
+      "com.typesafe.akka" %% "akka-stream" % Version.akkaVersion
     )
   )
 
@@ -151,8 +154,8 @@ lazy val `http4s-sample` = (project in file("http/http4s-sample"))
       "org.http4s" %% "http4s-blaze-server" % Version.http4sVersion,
       "org.http4s" %% "http4s-dsl"          % Version.http4sVersion,
       // log
-      "org.log4s" %% "log4s"                % Version.log4sVersion,
-      "org.slf4j"  % "slf4j-log4j12"        % Version.log4j12,
+      "org.log4s" %% "log4s"        % Version.log4sVersion,
+      "org.slf4j" % "slf4j-log4j12" % Version.log4j12
     )
   )
 
@@ -162,20 +165,20 @@ lazy val `finch-sample` = (project in file("http/finch-sample"))
     name := "finch-sample",
     libraryDependencies ++= Seq(
       "com.github.finagle" %% "finchx-core",
-      "com.github.finagle" %% "finchx-circe",
+      "com.github.finagle" %% "finchx-circe"
     ).map(_ % Version.finchVersion)
   )
 
 // json
 lazy val `circe-sample` = (project in file("json/circe-sample"))
-  //.settings(commonSettings)
+//.settings(commonSettings)
   .settings(
     name := "circe-sample",
     libraryDependencies ++= Seq(
       "io.circe" %% "circe-core",
       "io.circe" %% "circe-generic",
       "io.circe" %% "circe-parser"
-    ).map(_ % Version.circeVersion) ++
+    ).map(_               % Version.circeVersion) ++
       Seq("org.scalatest" %% "scalatest" % "3.2.0" % "test") // nique defined
   )
 
@@ -186,17 +189,22 @@ lazy val commonSettings = Seq(
   libraryDependencies ++= Seq(
     // test
     "org.scalatest" %% "scalatest" % Version.scalatestVersion % "test",
-
     // akka
-    "com.typesafe.akka" %% "akka-actor" % Version.akkaVersion,
-    "com.typesafe.akka" %% "akka-testkit" % Version.akkaVersion % Test,
-  ),
+    "com.typesafe.akka" %% "akka-actor"   % Version.akkaVersion,
+    "com.typesafe.akka" %% "akka-testkit" % Version.akkaVersion % Test
+  )
 )
 
 lazy val airSpecSettings = Seq(
-  scalacOptions ++= Seq("-unchecked", "-feature", "-language:implicitConversions", "-language:higherKinds", "-language:postfixOps"),
+  scalacOptions ++= Seq(
+    "-unchecked",
+    "-feature",
+    "-language:implicitConversions",
+    "-language:higherKinds",
+    "-language:postfixOps"
+  ),
   libraryDependencies += "org.wvlet.airframe" %% "airspec" % Version.airSpecVersion % "test",
-  testFrameworks += new TestFramework("wvlet.airspec.Framework"),
+  testFrameworks += new TestFramework("wvlet.airspec.Framework")
 )
 
 lazy val scalaJsSettings = Seq(
@@ -206,17 +214,23 @@ lazy val scalaJsSettings = Seq(
   //scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) },
   scalaJSUseMainModuleInitializer := true,
   libraryDependencies ++= Seq(
-    "org.scala-js" %%% "scalajs-dom" % "1.0.0",
-    "org.querki" %%% "jquery-facade" % "1.2",
+    "org.scala-js" %%% "scalajs-dom"   % "1.0.0",
+    "org.querki"   %%% "jquery-facade" % "1.2"
   ),
   skip in packageJSDependencies := false,
   jsDependencies += "org.webjars" % "jquery" % "2.2.1" / "jquery.js" minified "jquery.min.js"
 )
 
 lazy val scalaJsSpecSettings = Seq(
-  scalacOptions ++= Seq("-unchecked", "-feature", "-language:implicitConversions", "-language:higherKinds", "-language:postfixOps"),
+  scalacOptions ++= Seq(
+    "-unchecked",
+    "-feature",
+    "-language:implicitConversions",
+    "-language:higherKinds",
+    "-language:postfixOps"
+  ),
   libraryDependencies += "org.wvlet.airframe" %%% "airspec" % Version.airSpecVersion % "test",
-  testFrameworks += new TestFramework("wvlet.airspec.Framework"),
+  testFrameworks += new TestFramework("wvlet.airspec.Framework")
 )
 
 name := "scala-sandbox"
@@ -224,3 +238,10 @@ name := "scala-sandbox"
 version := "0.1"
 
 scalaVersion := Version.scalaBaseVersion
+
+// command alias.
+addCommandAlias("fmt", "all scalafmtSbt scalafmt test:scalafmt")
+addCommandAlias(
+  "check",
+  "all scalafmtSbtCheck scalafmtCheck test:scalafmtCheck"
+)
