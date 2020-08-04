@@ -6,7 +6,7 @@ object Dependency {
   val catsFree = "org.typelevel" %% "cats-free"     % Version.catsVersion
   val catsMtl  = "org.typelevel" %% "cats-mtl-core" % Version.catsMtlVersion
 
-  val simulacrum    = "com.github.mpilquist" %% "simulacrum" % "0.11.0"
+  val simulacrum    = "com.github.mpilquist" %% "simulacrum" % "0.19.0"
   val macroParadise = compilerPlugin("org.scalamacros" % "paradise" % "2.1.1" cross CrossVersion.full)
   val kindProjector = compilerPlugin("org.spire-math" %% "kind-projector" % "0.9.4")
   val resetAllAttrs = "org.scalamacros" %% "resetallattrs" % "1.0.0"
@@ -23,8 +23,8 @@ object Version {
   lazy val scalaBaseVersion = "2.12.12"
   // functional
   lazy val catsVersion    = "2.1.1"
-  lazy val catsMtlVersion = "0.2.1"
-  lazy val zioVersion     = "1.0.0-RC21"
+  lazy val catsMtlVersion = "0.7.1"
+  lazy val zioVersion     = "1.0.0"
   // db
   lazy val scalikejdbcVersion            = "3.4.0"
   lazy val scalikejdbcInitializerVersion = "2.8.0-scalikejdbc-3.4"
