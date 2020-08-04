@@ -73,15 +73,15 @@ lazy val grammar = (project in file("draft/grammar"))
       catsMtl,
       simulacrum,
       //specs2Core % Test, specs2Scalacheck % Test, scalacheck % Test,
-      macroParadise,
-      kindProjector,
+      //macroParadise,
+      //kindProjector,
       resetAllAttrs
     ),
     scalacOptions ++= Seq(
       "-deprecation",
       "-encoding",
       "UTF-8",
-      "-Ypartial-unification",
+      //"-Ypartial-unification",
       "-feature",
       "-language:_"
     )
@@ -120,7 +120,7 @@ lazy val amm = (project in file("tools/amm"))
       "io.circe" %% "circe-parser"
     ).map(_ % Version.circeVersion),
     libraryDependencies ++= Seq(
-      "org.skinny-framework" %% "skinny-http-client" % "3.0.1",
+      "org.skinny-framework" %% "skinny-http-client" % "3.1.0",
       "log4j"                % "log4j"               % "1.2.17",
       "org.slf4j"            % "slf4j-log4j12"       % "1.7.26" % Test
     )
