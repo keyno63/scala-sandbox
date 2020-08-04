@@ -22,7 +22,7 @@ object Dependency {
 object Version {
   lazy val scalaBaseVersion = "2.12.12"
   // functional
-  lazy val catsVersion    = "1.0.1"
+  lazy val catsVersion    = "2.1.1"
   lazy val catsMtlVersion = "0.2.1"
   lazy val zioVersion     = "1.0.0-RC21"
   // db
