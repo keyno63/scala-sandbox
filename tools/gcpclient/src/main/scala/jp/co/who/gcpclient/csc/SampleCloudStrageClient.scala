@@ -7,7 +7,7 @@ import java.io._
 
 import jp.co.who.gcpclient.config.Config
 
-object SampleCloudStrageClient extends Config with App {
+object SampleCloudStrageClient extends Config {
 
   @throws[IOException]
   def main(args: Array[String]): Unit = {
