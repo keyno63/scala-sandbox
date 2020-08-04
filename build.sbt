@@ -142,14 +142,14 @@ lazy val `akka-sample` = (project in file("http/akka-sample"))
     )
   )
 
-lazy val `htt4s-sample` = (project in file("http/htt4s-sample"))
+lazy val `http4s-sample` = (project in file("http/http4s-sample"))
   .settings(commonSettings)
   .settings(
-    name := "htt4s-sample",
+    name := "http4s-sample",
     libraryDependencies ++= Seq(
-      "org.http4s" %% "http4s-server"       % Version.htt4sVersion,
-      "org.http4s" %% "http4s-blaze-server" % Version.htt4sVersion,
-      "org.http4s" %% "http4s-dsl"          % Version.htt4sVersion,
+      "org.http4s" %% "http4s-server"       % Version.http4sVersion,
+      "org.http4s" %% "http4s-blaze-server" % Version.http4sVersion,
+      "org.http4s" %% "http4s-dsl"          % Version.http4sVersion,
       // log
       "org.log4s" %% "log4s"                % Version.log4sVersion,
       "org.slf4j"  % "slf4j-log4j12"        % Version.log4j12,
