@@ -10,7 +10,7 @@ import jp.co.who.gcpclient.config.Config
 object SampleCloudStrageClient extends Config with App {
 
   @throws[IOException]
-  override def main(args: Array[String]): Unit = {
+  def main(args: Array[String]): Unit = {
     val storage =
       if (args.length > 0) getStorageFromJsonKey(args(0))
       else StorageOptions.getDefaultInstance.getService
