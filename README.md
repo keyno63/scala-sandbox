@@ -1,7 +1,13 @@
 scala-sandbox
 ---
 
-[![Build Status](https://travis-ci.org/keyno63/training.svg?branch=master)](https://travis-ci.org/keyno63/training)
+[![Build Status][Link-Tarvis]][Badge-Tarvis]
+[![Build Status][Badge-Circle]][Link-Circle]
+
+[Link-Tarvis]: https://travis-ci.org/keyno63/training.svg?branch=master
+[Badge-Tarvis]: https://travis-ci.org/keyno63/training
+[Link-Circle]: https://circleci.com/gh/keyno63/scala-sandbox "circleci"
+[Badge-Circle]: https://circleci.com/gh/keyno63/scala-sandbox.svg?style=svg "circleci"
 
 # Proposal
 training to use Scala
