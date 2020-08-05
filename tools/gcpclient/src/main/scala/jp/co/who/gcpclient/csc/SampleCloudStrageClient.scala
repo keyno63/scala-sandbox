@@ -12,7 +12,7 @@ object SampleCloudStrageClient extends Config {
   @throws[IOException]
   def main(args: Array[String]): Unit = {
     val storage =
-      if (args.length > 0) getStorageFromJsonKey(args(0))
+      if (args.length > 0) getStorageFromJsonKey(args.head)
       else StorageOptions.getDefaultInstance.getService
     val bucket = storage.get(BUCKET)
     // 特定のディレクトリのみに絞る
