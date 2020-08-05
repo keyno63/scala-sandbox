@@ -1,10 +1,9 @@
 import io.finch._
-import cats.effect.{IO, Sync}
+import cats.effect.{ IO, Sync }
 import com.twitter.finagle.Http
 import com.twitter.util.Await
 import io.finch.DecodeEntity.decodeString
-import shapeless.{:+:, CNil}
-
+import shapeless.{ :+:, CNil }
 
 object App extends scala.App with Endpoint.Module[IO] {
   val endpoint = "api" :: "sample" :: Service.makeHttpService()
@@ -25,13 +24,11 @@ object App extends scala.App with Endpoint.Module[IO] {
 object Service extends Endpoint.Module[IO] {
   import io.finch._
 
-  def makeHttpService()(implicit runtime: Sync[IO]): Endpoint[IO, String :+: String :+: CNil]=
+  def makeHttpService()(implicit runtime: Sync[IO]): Endpoint[IO, String :+: String :+: CNil] =
     get(query) { query: String =>
       Ok(query)
-    } :+: post(stringBody) { body: String =>
-      Ok(body)
-    }
+    } :+: post(stringBody) { body: String => Ok(body) }
 
   private val query = paramOption[String]("query")
-  .mapAsync(query => IO.apply(query.getOrElse("none")))
+    .mapAsync(query => IO.apply(query.getOrElse("none")))
 }
