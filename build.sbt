@@ -166,7 +166,7 @@ lazy val `finch-sample` = (project in file("http/finch-sample"))
     libraryDependencies ++= Seq(
       "com.github.finagle" %% "finchx-core",
       "com.github.finagle" %% "finchx-circe"
-    ).map(_ % Version.finchVersion) ++
+    ).map(_               % Version.finchVersion) ++
       Seq("org.scalatest" %% "scalatest" % "3.2.0" % "test") // unique defined
   )
 
