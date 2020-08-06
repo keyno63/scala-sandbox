@@ -179,7 +179,7 @@ lazy val `circe-sample` = (project in file("json/circe-sample"))
       "io.circe" %% "circe-generic",
       "io.circe" %% "circe-parser"
     ).map(_               % Version.circeVersion) ++
-      Seq("org.scalatest" %% "scalatest" % "3.2.0" % "test") // nique defined
+      Seq("org.scalatest" %% "scalatest" % "3.2.0" % "test") // unique defined
   )
 
 // settings
