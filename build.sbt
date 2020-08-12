@@ -126,6 +126,7 @@ lazy val amm = (project in file("tools/amm"))
     )
   )
 
+// fp libs
 lazy val zio = (project in file("functional/zio"))
   .settings(commonSettings)
   .settings(
@@ -135,6 +136,7 @@ lazy val zio = (project in file("functional/zio"))
     )
   )
 
+// http libs
 lazy val `akka-sample` = (project in file("http/akka-sample"))
   .settings(commonSettings)
   .settings(
@@ -181,6 +183,21 @@ lazy val `circe-sample` = (project in file("json/circe-sample"))
       "io.circe" %% "circe-parser"
     ).map(_               % Version.circeVersion) ++
       Seq("org.scalatest" %% "scalatest" % "3.2.0" % "test") // unique defined
+  )
+
+// db libs
+lazy val `scalikejdbc-sample` = (project in file("db/scalikejdbc-sample"))
+  .settings(commonSettings)
+  .settings(
+    name := "scalikejdbc-sample",
+    libraryDependencies ++= Seq()
+  )
+
+lazy val `doobie-sample` = (project in file("db/doobie-sample"))
+  .settings(commonSettings)
+  .settings(
+    name := "doobie-sample",
+    libraryDependencies ++= Seq()
   )
 
 // settings
