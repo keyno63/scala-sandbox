@@ -27,8 +27,10 @@ object Version {
   lazy val catsMtlVersion = "0.7.1"
   lazy val zioVersion     = "1.0.0"
   // db
-  lazy val scalikejdbcVersion            = "3.4.0"
-  lazy val scalikejdbcInitializerVersion = "2.8.0-scalikejdbc-3.4"
+  lazy val scalikejdbcVersion            = "3.5.+"
+  lazy val scalikejdbcInitializerVersion = "2.8.0-scalikejdbc-3.5"
+  lazy val doobieVersion                 = "0.9.0"
+  lazy val h2Version                     = "1.4.+"
   // json
   lazy val circeVersion = "0.13.0"
   // http

@@ -190,14 +190,22 @@ lazy val `scalikejdbc-sample` = (project in file("db/scalikejdbc-sample"))
   .settings(commonSettings)
   .settings(
     name := "scalikejdbc-sample",
-    libraryDependencies ++= Seq()
+    libraryDependencies ++= Seq(
+      "org.scalikejdbc" %% "scalikejdbc"      % Version.scalikejdbcVersion,
+      "org.scalikejdbc" %% "scalikejdbc-test" % Version.scalikejdbcVersion % Test, // for test
+      "com.h2database"  % "h2"                % Version.h2Version,
+      "ch.qos.logback"  % "logback-classic"   % "1.2.+"
+    )
   )
 
 lazy val `doobie-sample` = (project in file("db/doobie-sample"))
   .settings(commonSettings)
   .settings(
     name := "doobie-sample",
-    libraryDependencies ++= Seq()
+    libraryDependencies ++= Seq(
+      "org.tpolecat" %% "doobie-core" % Version.doobieVersion,
+      "org.tpolecat" %% "doobie-h2"   % Version.doobieVersion
+    )
   )
 
 // settings
