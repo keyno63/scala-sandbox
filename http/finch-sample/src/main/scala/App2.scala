@@ -23,7 +23,7 @@ object Service2 extends Endpoint.Module[IO] {
     } :+: post(stringBodyOption :: headerOption("content-type")) { (body: Option[String], header: Option[String]) =>
       (body, header) match {
         case (_, Some(value)) => Ok(s"ok. header: $value, body: ${body.getOrElse("no body")}")
-        case _           => BadRequest(new Exception(s"invalid request. header: $header, body: $body"))
+        case _                => BadRequest(new Exception(s"invalid request. header: $header, body: $body"))
       }
     }
 
