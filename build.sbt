@@ -133,7 +133,12 @@ lazy val zio = (project in file("functional/zio"))
     name := "zio",
     libraryDependencies ++= Seq(
       "dev.zio" %% "zio" % Version.zioVersion
-    )
+    ) ++ Seq(
+      "io.circe" %% "circe-core",
+      "io.circe" %% "circe-generic",
+      "io.circe" %% "circe-parser"
+    ).map(_               % Version.circeVersion) ++
+      Seq("org.scalatest" %% "scalatest" % "3.2.0" % "test") // unique defined
   )
 
 // http libs
