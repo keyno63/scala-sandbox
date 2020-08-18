@@ -132,7 +132,8 @@ lazy val zio = (project in file("functional/zio"))
   .settings(
     name := "zio",
     libraryDependencies ++= Seq(
-      "dev.zio" %% "zio" % Version.zioVersion
+      "dev.zio" %% "zio"      % Version.zioVersion,
+      "dev.zio" %% "zio-test" % Version.zioVersion % "test"
     ) ++ Seq(
       "io.circe" %% "circe-core",
       "io.circe" %% "circe-generic",
