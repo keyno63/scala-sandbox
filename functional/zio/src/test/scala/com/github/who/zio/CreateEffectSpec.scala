@@ -24,7 +24,6 @@ object CreateEffectSpec extends DefaultRunnableSpec {
             |}
             |""".stripMargin
         assertM(zioEither(jsonStr))(
-          //equalTo(Some((EffectUser("id1", "Alice", "t1"), Team("t1", "Alice1"))))
           equalTo(Some((EffectUser("1", "Alice", "t1"), Team("t1", "Alice1"))))
         )
       }
