@@ -96,7 +96,7 @@ lazy val awsclient = (project in file("tools/awsclient"))
   .settings(
     name := "awsclient",
     libraryDependencies ++= Seq(
-      "com.amazonaws" % "aws-java-sdk-s3" % "1.11.847"
+      "com.amazonaws" % "aws-java-sdk-s3" % Version.AwsSdkVersion
     )
   )
 
@@ -105,7 +105,7 @@ lazy val gcpclient = (project in file("tools/gcpclient"))
   .settings(
     name := "gcpclient",
     libraryDependencies ++= Seq(
-      "com.google.cloud" % "google-cloud-storage" % "1.87.0"
+      "com.google.cloud" % "google-cloud-storage" % Version.googleCloudVersion
     )
   )
 

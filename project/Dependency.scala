@@ -41,6 +41,10 @@ object Version {
   // log
   lazy val log4sVersion = "1.8.2"
   lazy val log4j12      = "1.7.30"
+  // aws
+  lazy val AwsSdkVersion = "1.11.847"
+  // gcp
+  lazy val googleCloudVersion = "1.87.0"
   // test
   lazy val airSpecVersion = "19.8.8"
   //lazy val scalatestVersion = "3.2.0" // まだ早かった
