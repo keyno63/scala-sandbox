@@ -91,6 +91,14 @@ lazy val grammar = (project in file("draft/grammar"))
     libraryDependencies ++= Seq(
       )
   )
+lazy val awsclient = (project in file("tools/awsclient"))
+  .settings(commonSettings)
+  .settings(
+    name := "awsclient",
+    libraryDependencies ++= Seq(
+      "com.amazonaws" % "aws-java-sdk-s3" % "1.11.847"
+    )
+  )
 
 lazy val gcpclient = (project in file("tools/gcpclient"))
   .settings(commonSettings)
