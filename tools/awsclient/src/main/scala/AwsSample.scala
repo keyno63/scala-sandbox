@@ -1,17 +1,15 @@
 import client.S3Client
-import com.typesafe.config._
+import config.aws.S3Property
 
 object AwsSample extends scala.App {
 
-  // typesafe config
-  val config = ConfigFactory.load()
-
-  val accessKey = config.getString("aws.s3.access-key")
-  val secretKey = config.getString("aws.s3.secret-key")
-  val region = "us-east-2"
-  val bucketName = "kofujiw-s3bucket"
-  println(accessKey + secretKey)
-  val s3 = S3Client.s3Client(accessKey, secretKey, region, bucketName)
+  println(S3Property.secretKey)
+  val s3 = S3Client.s3Client(
+    S3Property.accessKey,
+    S3Property.secretKey,
+    S3Property.region,
+    S3Property.bucketName
+  )
   println(s3.getBuckets)
 
 }
