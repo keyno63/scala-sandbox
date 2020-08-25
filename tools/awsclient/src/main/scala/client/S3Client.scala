@@ -1,9 +1,9 @@
 package client
 
 import collection.JavaConverters._
-import com.amazonaws.auth.{AWSStaticCredentialsProvider, BasicAWSCredentials}
+import com.amazonaws.auth.{ AWSStaticCredentialsProvider, BasicAWSCredentials }
 import com.amazonaws.services.s3.model.Bucket
-import com.amazonaws.services.s3.{AmazonS3, AmazonS3ClientBuilder}
+import com.amazonaws.services.s3.{ AmazonS3, AmazonS3ClientBuilder }
 
 trait S3Client {
   val region: String
@@ -13,14 +13,12 @@ trait S3Client {
 }
 
 object S3Client {
-  def s3Client(accessKey: String, secretKey: String, regionValue: String, bucket: String)
-  : S3Client = new S3Client {
-    val region: String= regionValue
+  def s3Client(accessKey: String, secretKey: String, regionValue: String, bucket: String): S3Client = new S3Client {
+    val region: String     = regionValue
     val bucketName: String = bucket
-    val credentials = new BasicAWSCredentials(accessKey, secretKey)
-    val provider = new AWSStaticCredentialsProvider(credentials)
-    val s3: AmazonS3 = AmazonS3ClientBuilder
-      .standard
+    val credentials        = new BasicAWSCredentials(accessKey, secretKey)
+    val provider           = new AWSStaticCredentialsProvider(credentials)
+    val s3: AmazonS3 = AmazonS3ClientBuilder.standard
       .withCredentials(provider)
       .withRegion(region)
       .build();
