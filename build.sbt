@@ -183,7 +183,7 @@ lazy val `skinny-sample` = (project in file("http/skinny-sample"))
     ).map(_ % Version.skinnyVersion) ++ Seq(
       // log
       "org.slf4j" % "slf4j-log4j12" % Version.log4j12 % Test,
-      "log4j" % "log4j" % "1.2.17",
+      "log4j"     % "log4j"         % "1.2.17"
     )
   )
 
