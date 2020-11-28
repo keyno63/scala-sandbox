@@ -175,6 +175,18 @@ lazy val `http4s-sample` = (project in file("http/http4s-sample"))
     )
   )
 
+lazy val `skinny-sample` = (project in file("http/skinny-sample"))
+  .settings(
+    name := "skinny-sample",
+    libraryDependencies ++= Seq(
+      "org.skinny-framework" %% "skinny-http-client"
+    ).map(_ % Version.skinnyVersion) ++ Seq(
+      // log
+      "org.slf4j" % "slf4j-log4j12" % Version.log4j12 % Test,
+      "log4j" % "log4j" % "1.2.17",
+    )
+  )
+
 lazy val `finch-sample` = (project in file("http/finch-sample"))
   .settings(commonSettings)
   .settings(

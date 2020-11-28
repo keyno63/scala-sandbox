@@ -38,6 +38,7 @@ object Version {
   lazy val akkaHttpVersion = "10.1.12"
   lazy val http4sVersion   = "0.21.6"
   lazy val finchVersion    = "0.32.1"
+  lazy val skinnyVersion   = "3.1.0"
   // log
   lazy val log4sVersion = "1.8.2"
   lazy val log4j12      = "1.7.30"

@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ScalaCompilerConfiguration">
-    <profile name="sbt 1" modules="akka-sample,amm,awsclient,circe-sample,doobie-sample,finch-sample,gcpclient,htt4s-sample,http4s-sample,sandbox,sandbox_23,scala-sandbox,scalikejdbc-sample,socket,zio" />
-    <profile name="sbt 2" modules="grammar">
+    <profile name="sbt 1" modules="akka-sample,amm,awsclient,circe-sample,doobie-sample,finch-sample,gcpclient,http4s-sample,scala-sandbox,scala-sandbox_4684,scalikejdbc-sample,skinny-sample,socket,zio" />
+    <profile name="sbt 2" modules="cop,gof,sip">
+      <option name="postfixOps" value="true" />
+      <option name="implicitConversions" value="true" />
+      <option name="higherKinds" value="true" />
+      <option name="uncheckedWarnings" value="true" />
+      <option name="featureWarnings" value="true" />
+    </profile>
+    <profile name="sbt 3" modules="grammar">
       <option name="postfixOps" value="true" />
       <option name="implicitConversions" value="true" />
       <option name="higherKinds" value="true" />
@@ -15,28 +22,13 @@
         <parameter value="-language:_" />
       </parameters>
     </profile>
-    <profile name="sbt 3" modules="dashboard">
+    <profile name="sbt 4" modules="dashboard">
       <option name="postfixOps" value="true" />
       <option name="implicitConversions" value="true" />
       <option name="higherKinds" value="true" />
       <option name="deprecationWarnings" value="true" />
       <option name="uncheckedWarnings" value="true" />
       <option name="featureWarnings" value="true" />
-      <parameters>
-        <parameter value="-encoding" />
-        <parameter value="utf8" />
-      </parameters>
-    </profile>
-    <profile name="sbt 4" modules="cop,gof,sip">
-      <option name="postfixOps" value="true" />
-      <option name="implicitConversions" value="true" />
-      <option name="higherKinds" value="true" />
-      <option name="uncheckedWarnings" value="true" />
-      <option name="featureWarnings" value="true" />
-    </profile>
-    <profile name="sbt 5" modules="teratail-play">
-      <option name="deprecationWarnings" value="true" />
-      <option name="uncheckedWarnings" value="true" />
       <parameters>
         <parameter value="-encoding" />
         <parameter value="utf8" />
