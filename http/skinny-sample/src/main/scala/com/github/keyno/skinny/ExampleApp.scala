@@ -1,14 +1,20 @@
 package com.github.keyno.skinny
 
-import skinny.http.{ HTTP, Request }
+import skinny.http.{HTTP, Request}
+import com.typesafe.config._
 
 object ExampleApp extends scala.App {
 
+  // setting config.
+  val config = ConfigFactory.load()
+  val url = config.getString("app.url")
+  val connectionTimeout = config.getInt("app.connectionTimeOut")
+  val readTimeout = config.getInt("app.readTimeOut")
+
   // 自前の mock server 用のリクエスト先.
-  val url     = "http://localhost:8080/api/webclient/test3"
   val request = new Request(url)
-  request.connectTimeoutMillis(5000)
-  request.readTimeoutMillis(5000)
+  request.connectTimeoutMillis(connectionTimeout)
+  request.readTimeoutMillis(readTimeout)
 
   // 自前の mock server 用の body.
   val body =
