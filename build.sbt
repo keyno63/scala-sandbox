@@ -184,8 +184,10 @@ lazy val `skinny-sample` = (project in file("http/skinny-sample"))
       // log
       "org.slf4j" % "slf4j-log4j12" % Version.log4j12 % Test,
       "log4j"     % "log4j"         % "1.2.17",
+    ) ++ Seq(
       // config
-      "com.typesafe" % "config" % "1.4.1"
+      "com.typesafe" % "config" % "1.4.1",
+      "com.github.pureconfig" %% "pureconfig" % "0.14.0"
     )
   )
 
