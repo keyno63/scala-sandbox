@@ -238,6 +238,15 @@ lazy val `doobie-sample` = (project in file("db/doobie-sample"))
     )
   )
 
+lazy val `skunk-sample` = (project in file("db/skunk-sample"))
+  .settings(commonSettings)
+  .settings(
+    name := "skunk-sample",
+    libraryDependencies ++= Seq(
+      "org.tpolecat" %% "skunk-core" % "0.0.23"
+    )
+  )
+
 // settings
 lazy val commonSettings = Seq(
   scalaVersion := Version.scalaBaseVersion,
