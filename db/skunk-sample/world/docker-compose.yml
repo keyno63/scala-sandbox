@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  skunk_world:
+    build: .
+    container_name: postgres_skunk_world
+    ports:
+      - "15432:5432"
+    volumes:
+      - ./postgres/init:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8"
+    hostname: postgres
+    restart: always
+    user: root
+    stdin_open: true
