@@ -16,6 +16,9 @@ object App extends IOApp {
     )
 
   def run(args: List[String]): IO[ExitCode] =
+    querySample
+
+  def querySample(): IO[ExitCode] =
     session.use { s =>
       for {
         d <- s.unique(sql"select current_date".query(date))
