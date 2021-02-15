@@ -1,7 +1,7 @@
 import cats.effect.{ ExitCode, IO, IOApp, Resource }
 import skunk.Session
 import skunk.implicits.toStringOps
-import skunk.codec.all.date
+import skunk.codec.all.{ date, int4, varchar }
 import natchez.Trace.Implicits.noop
 
 object App extends IOApp {
@@ -16,7 +16,15 @@ object App extends IOApp {
     )
 
   def run(args: List[String]): IO[ExitCode] =
-    querySample
+    multiColumnQuerySample
+
+  def multiColumnQuerySample(): IO[ExitCode] =
+    session.use { s =>
+      for {
+        d <- s.execute(sql"SELECT name, population FROM country".query(varchar ~ int4))
+        _ <- IO(println(s"The current is $d"))
+      } yield ExitCode.Success
+    }
 
   def querySample(): IO[ExitCode] =
     session.use { s =>
