@@ -21,7 +21,7 @@ object App extends IOApp {
   def run(args: List[String]): Return =
     multiColumnQuerySample
 
-  def parameterizedQuery() = {
+  def parameterizedQuery(): IO[Unit] = {
     val e: Query[String, Country] =
       sql"""
     SELECT name, population
