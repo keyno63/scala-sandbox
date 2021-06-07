@@ -215,6 +215,16 @@ lazy val `circe-sample` = (project in file("json/circe-sample"))
       Seq("org.scalatest" %% "scalatest" % "3.2.0" % "test") // unique defined
   )
 
+lazy val `sprayjson-sample` = project
+  .in(file("json/spray-json-sample"))
+  .settings(
+    name := "sprayjson-sample",
+    libraryDependencies ++= Seq(
+      "io.spray" %% "spray-json"
+    ).map(_               % "1.3.6") ++
+      Seq("org.scalatest" %% "scalatest" % "3.2.0" % "test") // unique defined
+  )
+
 // db libs
 lazy val `scalikejdbc-sample` = (project in file("db/scalikejdbc-sample"))
   .settings(commonSettings)
