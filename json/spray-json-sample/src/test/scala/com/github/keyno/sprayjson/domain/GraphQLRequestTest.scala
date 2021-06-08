@@ -29,8 +29,8 @@ class GraphQLRequestTest extends AnyFlatSpec {
 //          ListValue(List(StringValue("lValue1"), StringValue("lValue2")))
 //      ).toJson(mapFormat(StringJsonFormat, sprayJsonOtherFormat))
 //    )
-    // なにか間違っている気がする. Object 形式になっていないのではないか
-    val expected1: String = """["queryValue","operationValue",{"key1":"value1"},{"key2":["lValue1","lValue2"]}]"""
+    val expected1: String =
+      """{"query":"queryValue","operation":"operationValue","variable":{"key1":"value1"},"extensions":{"key2":["lValue1","lValue2"]}}"""
     assert(ret1.toString() == expected1)
   }
 

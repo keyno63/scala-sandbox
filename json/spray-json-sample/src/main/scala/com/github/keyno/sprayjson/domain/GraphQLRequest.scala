@@ -14,12 +14,12 @@ object GraphQLRequest {
 
   implicit object sprayJsonFormat extends RootJsonFormat[GraphQLRequest] {
     override def write(obj: GraphQLRequest): JsValue =
-      JsArray(
-        JsString(obj.query.getOrElse("")),
-        JsString(obj.operationName.getOrElse("")),
-        obj.variable.getOrElse(Map.empty).toJson,
-        obj.extensions.getOrElse(Map.empty).toJson
-      )
+      Map(
+        "query"      -> JsString(obj.query.getOrElse("")),
+        "operation"  -> JsString(obj.operationName.getOrElse("")),
+        "variable"   -> obj.variable.getOrElse(Map.empty).toJson,
+        "extensions" -> obj.extensions.getOrElse(Map.empty).toJson
+      ).toJson
 
     override def read(json: JsValue): GraphQLRequest = json.convertTo[GraphQLRequest](sprayJsonFormat)
   }
