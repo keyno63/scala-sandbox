@@ -1,6 +1,6 @@
 package com.github.keyno.sprayjson.domain
 
-import spray.json.{ enrichAny, JsArray, JsString, JsValue, RootJsonFormat }
+import spray.json.{ enrichAny, JsString, JsValue, RootJsonFormat }
 
 case class GraphQLRequest(
   query: Option[String] = None,

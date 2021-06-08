@@ -2,7 +2,7 @@ package com.github.keyno.sprayjson.domain
 
 import com.github.keyno.sprayjson.domain.Other._
 import org.scalatest.flatspec.AnyFlatSpec
-import spray.json.{ enrichAny, JsArray, JsString, JsValue }
+import spray.json.{ enrichAny, JsString, JsValue }
 
 class GraphQLRequestTest extends AnyFlatSpec {
   import com.github.keyno.sprayjson.domain.GraphQLRequest._
@@ -20,15 +20,18 @@ class GraphQLRequestTest extends AnyFlatSpec {
       )
     )
     val ret1: JsValue = gql1.toJson
-//    val expected1: JsValue = JsArray(
-//      JsString("queryValue"),
-//      JsString("operationValue"),
-//      Map("key1" -> StringValue("value1")).toJson(mapFormat(StringJsonFormat, sprayJsonOtherFormat)),
-//      Map(
-//        "key2" ->
-//          ListValue(List(StringValue("lValue1"), StringValue("lValue2")))
-//      ).toJson(mapFormat(StringJsonFormat, sprayJsonOtherFormat))
-//    )
+    val expected0: JsValue = Map(
+      "query"     -> JsString("queryValue"),
+      "operation" -> JsString("operationValue"),
+      "variable"  -> Map("key1" -> "value1").toJson,
+      "extensions" ->
+        Map(
+          "key2" ->
+            List("lValue1", "lValue2")
+        ).toJson
+    ).toJson
+    assert(ret1 == expected0)
+
     val expected1: String =
       """{"query":"queryValue","operation":"operationValue","variable":{"key1":"value1"},"extensions":{"key2":["lValue1","lValue2"]}}"""
     assert(ret1.toString() == expected1)
