@@ -33,19 +33,26 @@ object GraphQLRequest {
     override def read(json: JsValue): GraphQLRequest =
       json match {
         case JsObject(m) => {
+          // Map の変換はできたが、そもそも Map をいい感じに case class に変換する方法もおもいつかないので、いまのままでいいかも
+          val convertedMap = m.map {
+            case (k, v) =>
+              (k, k match {
+                case "query" | "operation"     => v.convertTo[String]
+                case "variable" | "extensions" => v.convertTo[Map[String, Other]]
+              })
+          }
+          GraphQLRequest(
+            convertedMap.get("query").asInstanceOf[Option[String]],
+            convertedMap.get("operation").asInstanceOf[Option[String]],
+            convertedMap.get("variable").asInstanceOf[Option[Map[String, Other]]],
+            convertedMap.get("extensions").asInstanceOf[Option[Map[String, Other]]]
+          )
+
+          // 本来の実装
           val query: Option[String]                  = m.get("query").map(_.convertTo[String])
           val operation: Option[String]              = m.get("operation").map(_.convertTo[String])
           val variable: Option[Map[String, Other]]   = m.get("variable").map(_.convertTo[Map[String, Other]])
           val extensions: Option[Map[String, Other]] = m.get("extensions").map(_.convertTo[Map[String, Other]])
-          // Iterable に変換されてしまう. Map に戻し方がわからない.
-          // そもそも Map をいい感じに case class に変換する方法もおもいつかないので、いまのままでいいかも
-          val convertedMap = m.map {
-            case (k, v) =>
-              k match {
-                case "query" | "operation"     => v.convertTo[String]
-                case "variable" | "extensions" => v.convertTo[Map[String, Other]]
-              }
-          }
 
           GraphQLRequest(
             query,
