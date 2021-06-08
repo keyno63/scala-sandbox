@@ -219,6 +219,9 @@ lazy val `sprayjson-sample` = project
   .in(file("json/spray-json-sample"))
   .settings(
     name := "sprayjson-sample",
+    scalacOptions ++= Seq(
+      "-Xfatal-warnings"
+    ),
     libraryDependencies ++= Seq(
       "io.spray" %% "spray-json"
     ).map(_               % "1.3.6") ++
