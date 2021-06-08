@@ -1,6 +1,6 @@
 package com.github.keyno.sprayjson.domain
 
-import spray.json.{ enrichAny, JsString, JsValue, RootJsonFormat }
+import spray.json.{ enrichAny, JsObject, JsString, JsValue, RootJsonFormat }
 
 case class GraphQLRequest(
   query: Option[String] = None,
@@ -14,13 +14,47 @@ object GraphQLRequest {
 
   implicit object sprayJsonFormat extends RootJsonFormat[GraphQLRequest] {
     override def write(obj: GraphQLRequest): JsValue =
-      Map(
-        "query"      -> JsString(obj.query.getOrElse("")),
-        "operation"  -> JsString(obj.operationName.getOrElse("")),
-        "variable"   -> obj.variable.getOrElse(Map.empty).toJson,
-        "extensions" -> obj.extensions.getOrElse(Map.empty).toJson
-      ).toJson
+      // 以下は同じだった
+//      Map(
+//        "query"      -> JsString(obj.query.getOrElse("")),
+//        "operation"  -> JsString(obj.operationName.getOrElse("")),
+//        "variable"   -> obj.variable.getOrElse(Map.empty).toJson,
+//        "extensions" -> obj.extensions.getOrElse(Map.empty).toJson
+//      ).toJson
+      JsObject(
+        Map(
+          "query"      -> JsString(obj.query.getOrElse("")),
+          "operation"  -> JsString(obj.operationName.getOrElse("")),
+          "variable"   -> obj.variable.getOrElse(Map.empty).toJson,
+          "extensions" -> obj.extensions.getOrElse(Map.empty).toJson
+        )
+      )
 
-    override def read(json: JsValue): GraphQLRequest = json.convertTo[GraphQLRequest](sprayJsonFormat)
+    override def read(json: JsValue): GraphQLRequest =
+      json match {
+        case JsObject(m) => {
+          val query: Option[String]                  = m.get("query").map(_.convertTo[String])
+          val operation: Option[String]              = m.get("operation").map(_.convertTo[String])
+          val variable: Option[Map[String, Other]]   = m.get("variable").map(_.convertTo[Map[String, Other]])
+          val extensions: Option[Map[String, Other]] = m.get("extensions").map(_.convertTo[Map[String, Other]])
+          // Iterable に変換されてしまう. Map に戻し方がわからない.
+          // そもそも Map をいい感じに case class に変換する方法もおもいつかないので、いまのままでいいかも
+          val convertedMap = m.map {
+            case (k, v) =>
+              k match {
+                case "query" | "operation"     => v.convertTo[String]
+                case "variable" | "extensions" => v.convertTo[Map[String, Other]]
+              }
+          }
+
+          GraphQLRequest(
+            query,
+            operation,
+            variable,
+            extensions
+          )
+        }
+        case v @ _ => throw new Exception(s"parseError $v")
+      }
   }
 }
