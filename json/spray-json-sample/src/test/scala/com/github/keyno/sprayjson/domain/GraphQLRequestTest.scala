@@ -50,8 +50,7 @@ class GraphQLRequestTest extends AnyFlatSpec {
 
     val jsonStr: String =
       """{"query":"queryValue","operation":"operationValue","variable":{"key1":"value1"},"extensions":{"key2":["lValue1","lValue2"]}}"""
-    val jsonObj0: JsValue = jsonStr.parseJson
-    println(jsonObj0)
+    val jsonObj0: JsValue    = jsonStr.parseJson
     val gql0: GraphQLRequest = jsonObj0.convertTo[GraphQLRequest]
     assert(gql0 == expected)
 
@@ -74,7 +73,6 @@ class GraphQLRequestTest extends AnyFlatSpec {
     val str = "invalid"
     val actual: Either[Throwable, GraphQLRequest] = Try(str.toJson.convertTo[GraphQLRequest])
       .fold(e => Left(e), Right(_))
-    println(actual)
     val msg = s"parseError ${JsString(str)}"
     // Left の比較の仕方は要調査
     assert(actual.toString == Left(new Exception(msg)).toString)
