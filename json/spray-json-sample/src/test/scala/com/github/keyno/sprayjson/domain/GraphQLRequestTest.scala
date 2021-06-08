@@ -4,7 +4,10 @@ import com.github.keyno.sprayjson.domain.Other._
 import org.scalatest.flatspec.AnyFlatSpec
 import spray.json.{ enrichAny, enrichString, JsString, JsValue }
 
+import scala.util.Try
+
 class GraphQLRequestTest extends AnyFlatSpec {
+
   import com.github.keyno.sprayjson.domain.GraphQLRequest._
 
   "graphql request class" should "convert to JsonObj and JsonString" in {
@@ -67,4 +70,13 @@ class GraphQLRequestTest extends AnyFlatSpec {
     assert(gql == expected)
   }
 
+  "invalid jsObj" should "not convert to Graphql case class and throw exception" in {
+    val str = "invalid"
+    val actual: Either[Throwable, GraphQLRequest] = Try(str.toJson.convertTo[GraphQLRequest])
+      .fold(e => Left(e), Right(_))
+    println(actual)
+    val msg = s"parseError ${JsString(str)}"
+    // Left の比較の仕方は要調査
+    assert(actual.toString == Left(new Exception(msg)).toString)
+  }
 }
