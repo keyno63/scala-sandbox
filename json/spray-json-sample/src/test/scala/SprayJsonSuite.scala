@@ -41,8 +41,9 @@ class SprayJsonSuite extends AnyFlatSpec {
     Try(value.parseJson.convertTo[Person])
       .fold(throwValue => Left(s"failed to parse ${throwValue.toString}"), Right(_))
 
-  val valuez = parseJsonValue(targetJson)
-  val valuex = parseJsonValue(targetJson2)
+  val valuez                         = parseJsonValue(targetJson)
+  val valuex: Either[String, Person] = parseJsonValue(targetJson2)
+  val tmp                            = valuez.right.get.toJson
   println("valuez: " + valuez)
   println(valuex)
 
