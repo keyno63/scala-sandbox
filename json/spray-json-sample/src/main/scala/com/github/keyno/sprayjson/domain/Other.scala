@@ -29,36 +29,9 @@ object Other extends DefaultJsonProtocol {
   //implicit val v3 = jsonFormat1(ListValue.apply)
   implicit object sprayJsonOtherFormat extends RootJsonFormat[Other] {
 
-    override def write(obj: Other): JsValue = obj match {
-      case value: ExtendOther => extraSprayJsonWrite(value)
-      case ListValue(v)       => v.toJson(listFormat(sprayJsonOtherFormat))
-      case ObjectValue(v)     => v.toJson(mapFormat[String, Other](StringJsonFormat, sprayJsonOtherFormat))
-//      case list @ ListValue(_) => v1.write(list)
-//      case ov @ ObjectValue(_) => v2.write(ov)
-      case StringValue(value) => JsString(value)
-    }
+    override def write(obj: Other): JsValue = extraSprayJsonWrite(obj)
 
-    override def read(json: JsValue): Other = json match {
-      case JsNull => NullValue
-      case JsNumber(v) =>
-        if (v.isWhole) {
-          if (v.isValidInt) IntNumber(v.toInt)
-          else if (v.isValidLong) LongNumber(v.toLong)
-          else BigIntNumber(v.toBigInt())
-        } else {
-          if (v.isDecimalFloat) FloatNumber(v.toFloat)
-          else if (v.isDecimalDouble) DoubleNumber(v.toDouble)
-          else BigDecimalNumber(v)
-        }
-      case JsString(value) => StringValue(value)
-      case JsObject(_) => {
-        val mapValue = mapFormat[String, Other](StringJsonFormat, sprayJsonOtherFormat).read(json)
-        ObjectValue(mapValue)
-      }
-      case JsArray(_) => {
-        ListValue(listFormat[Other](sprayJsonOtherFormat).read(json))
-      }
-    }
+    override def read(json: JsValue): Other = extraSprayJsonRead(json)
   }
 }
 
