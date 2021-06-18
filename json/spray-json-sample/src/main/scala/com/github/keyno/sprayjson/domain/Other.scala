@@ -35,7 +35,7 @@ object Other extends DefaultJsonProtocol {
   }
 }
 
-sealed trait ExtendOther extends Other
+sealed trait ExtendOther extends Other with ResponseValue
 object ExtendOther {
   case object NullValue                   extends ExtendOther
   sealed trait IntValue                   extends ExtendOther
@@ -61,4 +61,12 @@ object ExtendOther {
     case class DoubleNumber(value: Double)         extends FloatValue
     case class BigDecimalNumber(value: BigDecimal) extends FloatValue
   }
+}
+
+sealed trait ResponseValue
+object ResponseValue {
+  case class ListValue(value: List[ResponseValue])              extends ResponseValue
+  case class ObjectValue(fields: List[(String, ResponseValue)]) extends ResponseValue
+  // skip implemented by using zio.Stream.
+  //case class StreamValue()
 }
