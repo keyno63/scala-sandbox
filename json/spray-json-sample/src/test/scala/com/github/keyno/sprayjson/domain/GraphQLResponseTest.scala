@@ -9,11 +9,6 @@ import spray.json.{ enrichAny, JsArray, JsNull, JsObject, JsString, JsValue, Roo
 
 class GraphQLResponseTest extends AnyWordSpec {
 
-  "Request" should {
-    "hoge" in {}
-
-  }
-
   // TODO: impl in production code
   implicit object parseImpl extends RootJsonFormat[GraphQLResponse[Any]] {
     override def write(obj: GraphQLResponse[Any]): JsValue       = GraphQLResponseSprayJson.write(obj)
