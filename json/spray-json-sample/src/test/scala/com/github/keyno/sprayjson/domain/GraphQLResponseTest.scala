@@ -14,11 +14,7 @@ class GraphQLResponseTest extends AnyWordSpec {
     override def write(obj: GraphQLResponse[Any]): JsValue       = GraphQLResponseSprayJson.write(obj)
     override def read(json: JsValue): GraphQLResponse[OrigError] = GraphQLResponseSprayJson.read(json)
   }
-//  "a" should {
-//    "x" in {
-//      assert(true)
-//    }
-//  }
+
   "graphql response" should {
     "be able to parsed" in {
       val error                             = ExecutionError("first error")
