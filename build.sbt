@@ -220,11 +220,15 @@ lazy val `sprayjson-sample` = project
   .settings(
     name := "sprayjson-sample",
     scalacOptions ++= Seq(
-      "-Xfatal-warnings"
+      "-Xfatal-warnings",
+      "-deprecation"
+//      , "-Ylog-classpath"
     ),
     libraryDependencies ++= Seq(
       "io.spray" %% "spray-json"
     ).map(_ % "1.3.6") ++
+      Seq("com.typesafe.akka" %% "akka-stream")
+        .map(_ % Version.akkaVersion) ++
       Seq(
         "com.typesafe.akka" %% "akka-http",
         "com.typesafe.akka" %% "akka-http-spray-json"

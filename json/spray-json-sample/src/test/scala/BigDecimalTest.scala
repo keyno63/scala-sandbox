@@ -26,13 +26,13 @@ class BigDecimalTest extends AnyFlatSpec {
     conv(_long)
 
     // float
-    val _float = BigDecimal(Float.MaxValue) + 1 - 1
+    val _float = BigDecimal.decimal(Float.MaxValue) + 1 - 1
     conv(_float)
 
     // double
-    val _double0 = BigDecimal(Float.MaxValue) + 1
+    val _double0 = BigDecimal.decimal(Float.MaxValue) + 1
     conv(_double0)
-    val _double = BigDecimal(Double.MaxValue) + 1 - 1
+    val _double = BigDecimal.decimal(Double.MaxValue) + 1 - 1
     conv(_double)
 
     //val _bigint = Double.MaxValue + 1

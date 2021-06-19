@@ -93,6 +93,7 @@ class SprayJsonBackend extends SprayJsonSupport {
             m.get("payload")
           )
         }
+        case _ => throw new Exception("unmatched type")
       }
     }.toEither
 

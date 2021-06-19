@@ -105,6 +105,7 @@ object json {
       case FloatNumber(x)      => JsNumber(x)
       case DoubleNumber(x)     => JsNumber(x)
       case BigDecimalNumber(x) => JsNumber(x)
+      case _                   => throw new Exception("not js number")
       //      case v: IntValue => {
 //        case IntNumber(x) => JsNumber(x)
 //        case LongNumber(x) => JsNumber(x)
@@ -159,9 +160,11 @@ object json {
 //            println(m.get("errors"))
 //            None
 //          }
+          case _ => throw new Exception("maybe not implemented now")
         }
         GraphQLResponse[OrigError](a.get, errors.getOrElse(List()), None)
       }
+      case _ => throw new Exception("maybe not implemented now")
     }
 
     private def handleError(err: Any): JsValue =
@@ -185,6 +188,7 @@ object json {
         val message = m.get("message").map(_.convertTo[String])
         OrigError.ExecutionError(message.getOrElse(""))
       }
+      case _ => throw new Exception("not implemented now")
     }
   }
 }
