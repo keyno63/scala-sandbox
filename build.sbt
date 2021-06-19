@@ -224,7 +224,11 @@ lazy val `sprayjson-sample` = project
     ),
     libraryDependencies ++= Seq(
       "io.spray" %% "spray-json"
-    ).map(_               % "1.3.6") ++
+    ).map(_ % "1.3.6") ++
+      Seq(
+        "com.typesafe.akka" %% "akka-http",
+        "com.typesafe.akka" %% "akka-http-spray-json"
+      ).map(_             % Version.akkaHttpVersion) ++
       Seq("org.scalatest" %% "scalatest" % "3.2.0" % "test") // unique defined
   )
 

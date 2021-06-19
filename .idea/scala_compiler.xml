@@ -34,7 +34,12 @@
         <parameter value="-language:_" />
       </parameters>
     </profile>
-    <profile name="sbt 5" modules="akka-sample,amm,awsclient,circe-sample,doobie-sample,finch-sample,gcpclient,http4s-sample,scala-sandbox,scalikejdbc-sample,skinny-sample,skunk-sample,socket,sprayjson-sample,zio" />
+    <profile name="sbt 4" modules="sprayjson-sample">
+      <parameters>
+        <parameter value="-Xfatal-warnings" />
+      </parameters>
+    </profile>
+    <profile name="sbt 5" modules="akka-sample,amm,awsclient,circe-sample,doobie-sample,finch-sample,gcpclient,http4s-sample,scala-sandbox,scalikejdbc-sample,skinny-sample,skunk-sample,socket,zio" />
     <profile name="sbt 6" modules="cop,gof,sip">
       <option name="postfixOps" value="true" />
       <option name="implicitConversions" value="true" />

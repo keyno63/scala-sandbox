@@ -72,7 +72,8 @@ class GraphQLRequestTest extends AnyFlatSpec {
   "invalid jsObj" should "not convert to Graphql case class and throw exception" in {
     val str = "invalid"
     val actual: Either[Throwable, GraphQLRequest] = Try(str.toJson.convertTo[GraphQLRequest])
-      .fold(e => Left(e), Right(_))
+    //.fold(e => Left(e), Right(_))
+    .toEither
     val msg = s"parseError ${JsString(str)}"
     // Left の比較の仕方は要調査
     assert(actual.toString == Left(new Exception(msg)).toString)
