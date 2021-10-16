@@ -1,5 +1,5 @@
 scala-sandbox
----
+===
 
 [![Build Status][Link-Tarvis]][Badge-Tarvis]
 [![Build Status][Badge-Circle]][Link-Circle]
@@ -9,21 +9,48 @@ scala-sandbox
 [Link-Circle]: https://circleci.com/gh/keyno63/scala-sandbox "circleci"
 [Badge-Circle]: https://circleci.com/gh/keyno63/scala-sandbox.svg?style=svg "circleci"
 
-# Proposal
-training to use Scala
+# OverView
 
-# projects
-## dashboard
-* implimentation now
+training to use Scala(2).
+Learn technic of Scala with implementation of programs
 
-## socket
-* socket program
+# sub projects
+ 
+- dashboard
+- socket: sandbox for socket program.
+- ~~sip~~
+- scalajs: sandbox for scala js project.
+- grammer: scala programing language grammar
 
-## sip
-* Session Initiation Protocol
+# Usage
 
-## scalajs
-* sandbox for scala js project.
+Use `sbt`, build tool.
 
-## grammar
-* scala programing language grammar
+## run
+
+```shell
+sbt run
+```
+
+## build
+
+```shell
+sbt compile
+```
+
+## test
+
+```shell
+sbt test
+```
+
+for sub project.
+
+```shell
+sbt "<sub project>/test"
+```
+
+# License
+
+This repository is MIT License.  
+see [License](./LICENSE) file.
